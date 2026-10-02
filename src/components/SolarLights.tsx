@@ -22,14 +22,14 @@ const features = [
 
 export function SolarLights() {
   return (
-    <section className="relative overflow-hidden bg-bg-deep text-white">
+    <section className="relative overflow-hidden bg-white text-ink border-y border-line">
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(255,106,0,0.22),transparent_65%)] blur-2xl"
+        className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(255,106,0,0.1),transparent_65%)] blur-2xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(255,196,120,0.12),transparent_70%)]"
+        className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(255,196,120,0.14),transparent_70%)]"
       />
 
       <div className="relative container-page section-pad">
@@ -38,26 +38,22 @@ export function SolarLights() {
             <p className="text-[12px] font-semibold tracking-[0.24em] uppercase text-accent">
               Outdoor · Solar
             </p>
-            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight">
+            <h2 className="mt-4 font-display text-[clamp(2.2rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-ink">
               Solar lights that
               <br />
               warm the night
             </h2>
             <div className="mt-5 h-[3px] w-14 bg-accent" />
-            <p className="mt-6 max-w-md text-base leading-relaxed text-white/65">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-ink-soft">
               Illuminate fences, patios, and garden walls with elegant up-and-down solar wall lights —
               energy free, automatic, and made for outdoor atmosphere.
             </p>
 
             <ul className="mt-10 grid gap-5 sm:grid-cols-2">
-              {features.map((item, i) => (
-                <li
-                  key={item.title}
-                  className="border-l border-accent/50 pl-4"
-                  style={{ animationDelay: `${i * 60}ms` }}
-                >
-                  <p className="text-sm font-semibold tracking-wide text-white">{item.title}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-white/55">{item.text}</p>
+              {features.map((item) => (
+                <li key={item.title} className="border-l-2 border-accent/70 pl-4">
+                  <p className="text-sm font-semibold tracking-wide text-ink">{item.title}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{item.text}</p>
                 </li>
               ))}
             </ul>
@@ -71,7 +67,7 @@ export function SolarLights() {
               </Link>
               <Link
                 href="/corporate"
-                className="inline-flex border border-white/30 px-7 py-3.5 text-[12px] font-semibold tracking-[0.16em] uppercase text-white transition-colors hover:bg-white hover:text-ink"
+                className="inline-flex border border-ink/20 px-7 py-3.5 text-[12px] font-semibold tracking-[0.16em] uppercase text-ink transition-colors hover:border-accent hover:text-accent"
               >
                 Bulk / corporate order
               </Link>
@@ -82,24 +78,24 @@ export function SolarLights() {
             <div className="relative">
               <div
                 aria-hidden
-                className="absolute -inset-3 bg-gradient-to-br from-accent/25 via-transparent to-transparent blur-xl"
+                className="absolute -inset-3 bg-gradient-to-br from-accent/15 via-transparent to-transparent blur-xl"
               />
-              <div className="relative overflow-hidden border border-white/10 bg-black/40 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+              <div className="relative overflow-hidden border border-line bg-bg-muted shadow-[0_24px_60px_rgba(16,18,24,0.1)]">
                 <Image
                   src="/solar-lights.jpg"
-                  alt="Solar up and down wall lights on outdoor fence at night"
+                  alt="Modern solar street lights illuminating a walkway at night"
                   width={1200}
                   height={900}
                   className="h-auto w-full object-cover"
                   sizes="(max-width:1024px) 100vw, 50vw"
                   priority={false}
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-5 sm:p-6">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent p-5 sm:p-6">
                   <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-accent">
-                    Dusk to dawn
+                    Solar street lighting
                   </p>
-                  <p className="mt-1 text-sm text-white/85">
-                    Auto on at night · Solar charge by day
+                  <p className="mt-1 text-sm text-white/90">
+                    Pathways · Campuses · Outdoor projects
                   </p>
                 </div>
               </div>
