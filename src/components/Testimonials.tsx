@@ -1,33 +1,36 @@
 const testimonials = [
   {
-    quote: "By far the most reliable LED partner for our commercial fit-outs.",
-    name: "Mark",
-    place: "LA",
+    quote: "Clear specs and reliable delivery for our commercial fit-out in Karachi.",
+    name: "Ahmed R.",
+    place: "Karachi",
   },
   {
-    quote: "Quick samples, clear specs, and professional project support.",
-    name: "Amelie",
-    place: "France",
+    quote: "Good support on outdoor and linear packages for a hospitality project.",
+    name: "Sara K.",
+    place: "Lahore",
   },
   {
-    quote: "The best source when we need architectural outdoor and linear systems together.",
-    name: "Mario",
-    place: "Netherlands",
+    quote: "Straightforward bulk quoting — useful when we need multiple fixture types together.",
+    name: "Bilal H.",
+    place: "Islamabad",
   },
 ];
 
 export function Testimonials() {
   return (
-    <section className="section-pad grain bg-bg-muted">
-      <div className="container-page grid gap-8 lg:grid-cols-3">
-        {testimonials.map((t) => (
-          <blockquote key={t.name} className="border-l-2 border-accent pl-6">
-            <p className="font-display text-2xl leading-snug text-ink">{t.quote}</p>
-            <footer className="mt-6 text-[12px] font-semibold tracking-[0.16em] uppercase text-ink-soft">
-              {t.name}, {t.place}
-            </footer>
-          </blockquote>
-        ))}
+    <section className="section-pad bg-bg-muted">
+      <div className="container-page">
+        <h2 className="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">What clients say</h2>
+        <div className="grid gap-8 lg:grid-cols-3">
+          {testimonials.map((t) => (
+            <blockquote key={t.name} className="border-t border-line pt-5">
+              <p className="text-base leading-relaxed text-ink">{t.quote}</p>
+              <footer className="mt-4 text-sm text-ink-soft">
+                {t.name} · {t.place}
+              </footer>
+            </blockquote>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -695,23 +695,23 @@ export const heroSlides = [
     image: "/hero-commercial.jpg",
     title: "Commercial\nLED lights",
     subtitle:
-      "Linear systems, wall washers, and architectural fixtures for offices, retail, hospitality, and large commercial projects across Pakistan.",
+      "Linear lights and wall washers for offices, retail, and large commercial projects.",
     ctaLabel: "Shop commercial LED",
     ctaHref: "/categories/commercial-led-light",
   },
   {
     image: IMG("/upload/2/image/202512/13174146dN9N7n.jpg"),
-    title: "LED systems\nbuilt to last",
-    subtitle: "Linear lights, modules, outdoor step lights, and decorative panels from Fiam Pakistan.",
-    ctaLabel: "View collection",
+    title: "Fixtures for\nevery project",
+    subtitle: "Modules, outdoor lights, and decorative fixtures with clear technical specs.",
+    ctaLabel: "View products",
     ctaHref: "/products",
   },
   {
     image: IMG("/upload/2/image/202512/13174130u86tJ8.jpg"),
-    title: "Light that\nshapes space",
-    subtitle: "Professional lighting for projects that need precision, durability, and clear technical support.",
-    ctaLabel: "View collection",
-    ctaHref: "/products",
+    title: "Supply for\nPakistan projects",
+    subtitle: "Product support and bulk quotations for contractors and facility teams.",
+    ctaLabel: "Corporate orders",
+    ctaHref: "/corporate",
   },
 ];
 

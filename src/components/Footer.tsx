@@ -11,109 +11,52 @@ const usefulLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-bg-deep text-white">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,106,0,0.12),transparent_42%)]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent"
-      />
-
-      <div className="relative container-page pt-16 pb-10 lg:pt-20">
-        <div className="flex flex-col gap-8 border-b border-white/10 pb-12 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-xl">
-            <p className="text-[12px] font-semibold tracking-[0.22em] uppercase text-accent">
-              Stay in the light
-            </p>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-semibold tracking-tight">
-              Specs, launches &amp; project support
-            </h2>
-            <p className="mt-3 text-sm text-white/55 leading-relaxed">
-              Join the Fiam Pakistan list for new fixtures and corporate lighting updates.
-            </p>
-          </div>
-          <form className="flex w-full max-w-md overflow-hidden rounded-sm border border-white/15 bg-white/[0.03] backdrop-blur-sm">
-            <label className="sr-only" htmlFor="newsletter">
-              Email for newsletter
-            </label>
-            <input
-              id="newsletter"
-              type="email"
-              placeholder="Your email address"
-              className="w-full bg-transparent px-4 py-3.5 text-sm text-white outline-none placeholder:text-white/35"
-            />
-            <button
-              type="button"
-              className="shrink-0 bg-accent px-6 text-[11px] font-semibold tracking-[0.14em] uppercase text-white hover:bg-accent-deep transition-colors"
-            >
-              Join
-            </button>
-          </form>
-        </div>
-
-        <div className="grid gap-12 py-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
-            <Link
-              href="/"
-              aria-label="Fiam Pakistan home"
-              className="inline-flex bg-transparent"
-            >
+    <footer className="bg-bg-deep text-white">
+      <div className="container-page pt-14 pb-8">
+        <div className="grid gap-10 border-b border-white/10 pb-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <Link href="/" aria-label="Fiam Pakistan home" className="inline-flex">
               <Image
                 src="/fiam-logo-light.png"
                 alt="FIAM"
-                width={148}
-                height={45}
+                width={140}
+                height={42}
                 unoptimized
-                className="h-11 w-auto object-contain bg-transparent"
+                className="h-10 w-auto object-contain"
               />
             </Link>
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
-              Architectural LED for commercial, outdoor, and decorative projects — supplied across
-              Pakistan for professionals who specify with confidence.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
+              LED fixtures for commercial, outdoor, and decorative projects across Pakistan.
             </p>
-            <a
-              href={`mailto:${company.email}`}
-              className="mt-6 inline-flex text-sm font-medium text-white link-underline"
-            >
+            <a href={`mailto:${company.email}`} className="mt-4 inline-block text-sm text-white hover:text-accent">
               {company.email}
             </a>
           </div>
 
-          <div className="lg:col-span-2">
-            <h3 className="text-[11px] font-semibold tracking-[0.2em] uppercase text-white/40">
-              Collections
-            </h3>
-            <div className="mt-3 mb-5 h-px w-8 bg-accent" />
-            <ul className="space-y-3 text-[15px] text-white/70">
+          <div>
+            <h3 className="text-sm font-semibold">Collections</h3>
+            <ul className="mt-4 space-y-2 text-sm text-white/65">
               {categories.map((cat) => (
                 <li key={cat.slug}>
-                  <Link
-                    href={`/categories/${cat.slug}`}
-                    className="transition-colors hover:text-accent"
-                  >
+                  <Link href={`/categories/${cat.slug}`} className="hover:text-white">
                     {cat.name}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/products" className="transition-colors hover:text-accent">
+                <Link href="/products" className="hover:text-white">
                   All products
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="lg:col-span-3">
-            <h3 className="text-[11px] font-semibold tracking-[0.2em] uppercase text-white/40">
-              Useful links
-            </h3>
-            <div className="mt-3 mb-5 h-px w-8 bg-accent" />
-            <ul className="space-y-3 text-[15px] text-white/70">
+          <div>
+            <h3 className="text-sm font-semibold">Company</h3>
+            <ul className="mt-4 space-y-2 text-sm text-white/65">
               {usefulLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="transition-colors hover:text-accent">
+                  <Link href={link.href} className="hover:text-white">
                     {link.label}
                   </Link>
                 </li>
@@ -121,40 +64,23 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-3">
-            <h3 className="text-[11px] font-semibold tracking-[0.2em] uppercase text-white/40">
-              Contact
-            </h3>
-            <div className="mt-3 mb-5 h-px w-8 bg-accent" />
-            <ul className="space-y-4 text-[15px] text-white/70">
+          <div>
+            <h3 className="text-sm font-semibold">Contact</h3>
+            <ul className="mt-4 space-y-2 text-sm text-white/65">
               <li>
-                <p className="text-[11px] tracking-[0.14em] uppercase text-white/35">Email</p>
-                <a
-                  href={`mailto:${company.email}`}
-                  className="mt-1 block transition-colors hover:text-accent"
-                >
+                <a href={`mailto:${company.email}`} className="hover:text-white">
                   {company.email}
                 </a>
               </li>
               <li>
-                <p className="text-[11px] tracking-[0.14em] uppercase text-white/35">Phone</p>
-                <a
-                  href={`tel:${company.phone.replace(/\s/g, "")}`}
-                  className="mt-1 block transition-colors hover:text-accent"
-                >
+                <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="hover:text-white">
                   {company.phone}
-                </a>
-                <a
-                  href={`tel:${company.mobile.replace(/\s/g, "")}`}
-                  className="mt-1 block transition-colors hover:text-accent"
-                >
-                  {company.mobile}
                 </a>
               </li>
               <li>
                 <Link
                   href="/corporate"
-                  className="inline-flex border border-white/20 px-4 py-2.5 text-[11px] font-semibold tracking-[0.14em] uppercase text-white transition-colors hover:border-accent hover:bg-accent"
+                  className="mt-3 inline-flex border border-white/25 px-4 py-2 text-sm text-white hover:border-accent hover:bg-accent transition-colors"
                 >
                   Bulk / corporate order
                 </Link>
@@ -162,24 +88,14 @@ export function Footer() {
             </ul>
           </div>
         </div>
-      </div>
 
-      <div className="relative border-t border-white/10 bg-black/25">
-        <div className="container-page flex flex-col gap-4 py-5 text-[12px] text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 py-5 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {company.legalName}. All rights reserved.
           </p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link href="/about" className="hover:text-white transition-colors">
-              About
-            </Link>
-            <Link href="/contact" className="hover:text-white transition-colors">
-              Privacy
-            </Link>
-            <a href="https://fiam.com.pk/" className="hover:text-white transition-colors">
-              fiam.com.pk
-            </a>
-          </div>
+          <a href="https://fiam.com.pk/" className="hover:text-white">
+            fiam.com.pk
+          </a>
         </div>
       </div>
     </footer>
