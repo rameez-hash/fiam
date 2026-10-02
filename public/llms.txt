@@ -1,0 +1,28 @@
+# Fiam Pakistan
+
+> Fiam Pakistan supplies commercial LED fixtures, LED modules (GU10/MR16/PAR/AR111), outdoor step lights, and decorative lighting panels for projects across Pakistan.
+
+## Site
+- Home: /
+- Products: /products
+- Categories: /categories/{slug}
+- Product detail: /products/{slug}
+- Corporate (bulk / product orders): /corporate
+- About: /about
+- Projects: /projects
+- Contact: /contact
+- Sitemap: /sitemap.xml
+- Domain: https://fiam.com.pk
+
+## Categories
+- commercial-led-light — Commercial LED Light (linear, wall washer)
+- fixtures-led-module — Fixtures LED Module / GU10 / MR16
+- outdoor-light — Outdoor Light (IP65 step lights)
+- decorative-lighting — Decorative Lighting (panels & accents)
+
+## Contact
+- Email: info@fiam.com.pk
+- Website: https://fiam.com.pk
+
+## Product imagery
+Product models and imagery referenced from http://www.fiam.cc/
