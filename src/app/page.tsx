@@ -3,8 +3,8 @@ import { AtmosphereBand } from "@/components/AtmosphereBand";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { FeaturedSale } from "@/components/FeaturedSale";
 import { Hero } from "@/components/Hero";
-import { LuxuryWallLights } from "@/components/LuxuryWallLights";
 import { PopularProducts } from "@/components/PopularProducts";
+import { SolarLights } from "@/components/SolarLights";
 import { Testimonials } from "@/components/Testimonials";
 import { company } from "@/data/products";
 import { JsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
@@ -47,7 +47,7 @@ export default function HomePage() {
       <JsonLd data={faqJsonLd(faqs)} />
       <Hero />
       <CategoryGrid />
-      <LuxuryWallLights />
+      <SolarLights />
       <PopularProducts />
       <Testimonials />
       <AtmosphereBand />
