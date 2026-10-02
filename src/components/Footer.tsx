@@ -4,6 +4,7 @@ import { categories, company } from "@/data/products";
 
 const usefulLinks = [
   { href: "/about", label: "About" },
+  { href: "/stores", label: "Store locations" },
   { href: "/projects", label: "Projects" },
   { href: "/corporate", label: "Corporate orders" },
   { href: "/contact", label: "Contact" },

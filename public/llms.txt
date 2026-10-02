@@ -8,6 +8,7 @@
 - Categories: /categories/{slug}
 - Product detail: /products/{slug}
 - Corporate (bulk / product orders): /corporate
+- Store locations: /stores
 - About: /about
 - Projects: /projects
 - Contact: /contact
