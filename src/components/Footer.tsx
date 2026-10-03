@@ -80,7 +80,7 @@ export function Footer() {
         </div>
 
         {/* Middle: 4 columns */}
-        <div className="grid gap-10 border-b border-white/15 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div data-anim="stagger" className="grid gap-10 border-b border-white/15 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div>
             <h3 className="text-base font-semibold">Information</h3>
             <ul className="mt-5 space-y-3 text-sm text-white/65">

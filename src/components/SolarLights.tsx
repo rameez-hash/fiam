@@ -26,16 +26,19 @@ export function SolarLights() {
       <div className="container-page section-pad">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="order-2 lg:order-1">
-            <p className="text-sm text-accent font-medium">Outdoor solar</p>
-            <h2 className="mt-3 text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-tight tracking-tight text-ink">
+            <p data-anim="fade" className="text-sm text-accent font-medium">Outdoor solar</p>
+            <h2
+              data-anim="lines"
+              className="mt-3 text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-tight tracking-tight text-ink"
+            >
               Solar street lighting for outdoor projects
             </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-ink-soft">
+            <p data-anim="fade" className="mt-4 max-w-md text-[15px] leading-relaxed text-ink-soft">
               Reliable solar fixtures for pathways, compounds, and commercial outdoor areas —
               practical to install and economical to run.
             </p>
 
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+            <ul data-anim="stagger" className="mt-8 grid gap-4 sm:grid-cols-2">
               {features.map((item) => (
                 <li key={item.title}>
                   <p className="text-sm font-semibold text-ink">{item.title}</p>
@@ -44,7 +47,7 @@ export function SolarLights() {
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div data-anim="fade" className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/categories/outdoor-light"
                 className="inline-flex bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-deep transition-colors"
@@ -61,7 +64,7 @@ export function SolarLights() {
           </div>
 
           <div className="order-1 lg:order-2">
-            <div className="overflow-hidden bg-bg-muted">
+            <div data-anim="image" className="overflow-hidden bg-bg-muted">
               <Image
                 src="/solar-lights.jpg"
                 alt="Solar street lights along an outdoor walkway at night"

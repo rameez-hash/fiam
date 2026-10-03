@@ -110,11 +110,6 @@ export function websiteJsonLd() {
     url: absoluteUrl("/"),
     description: company.description,
     publisher: { "@type": "Organization", name: company.legalName },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${absoluteUrl("/products")}?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 

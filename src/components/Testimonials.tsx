@@ -20,8 +20,10 @@ export function Testimonials() {
   return (
     <section className="section-pad bg-bg-muted">
       <div className="container-page">
-        <h2 className="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">What clients say</h2>
-        <div className="grid gap-8 lg:grid-cols-3">
+        <h2 data-anim="lines" className="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">
+          What clients say
+        </h2>
+        <div data-anim="stagger" className="grid gap-8 lg:grid-cols-3">
           {testimonials.map((t) => (
             <blockquote key={t.name} className="border-t border-line pt-5">
               <p className="text-base leading-relaxed text-ink">{t.quote}</p>

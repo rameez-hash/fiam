@@ -47,23 +47,27 @@ export default async function CategoryPage({ params }: Props) {
       />
 
       <section className="relative isolate min-h-[48vh] overflow-hidden bg-bg-deep text-white">
-        <Image
-          src={category.image}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-40"
-        />
+        <div data-parallax="16" className="absolute inset-x-0 -inset-y-[10%]">
+          <Image
+            src={category.image}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-40"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20" />
         <div className="relative container-page flex min-h-[48vh] flex-col justify-end pb-16 pt-28">
-          <p className="text-[12px] font-semibold tracking-[0.22em] uppercase text-white/60">
+          <p data-anim="fade" className="text-[12px] font-semibold tracking-[0.22em] uppercase text-white/60">
             {category.highlight}
           </p>
-          <h1 className="mt-3 max-w-3xl font-display text-5xl sm:text-6xl font-semibold tracking-tight">
+          <h1 data-anim="lines" className="mt-3 max-w-3xl font-display text-5xl sm:text-6xl font-semibold tracking-tight">
             {category.name}
           </h1>
-          <p className="mt-5 max-w-2xl text-white/75 leading-relaxed">{category.description}</p>
+          <p data-anim="fade" data-delay="0.15" className="mt-5 max-w-2xl text-white/75 leading-relaxed">
+            {category.description}
+          </p>
         </div>
       </section>
 
@@ -85,7 +89,7 @@ export default async function CategoryPage({ params }: Props) {
 
       <section className="container-page pb-20">
         <p className="mb-8 text-sm text-ink-soft">{items.length} products</p>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div data-anim="stagger" className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {items.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

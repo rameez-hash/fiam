@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { StoreLocator } from "@/components/StoreLocator";
 import { storeCities, storeContact } from "@/data/stores";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
@@ -29,71 +30,53 @@ export default function StoresPage() {
       />
 
       <section className="bg-bg-deep text-white">
-        <div className="container-page py-16 sm:py-20">
-          <p className="text-sm text-white/60">Store locator</p>
-          <h1 className="mt-3 text-4xl sm:text-5xl font-semibold tracking-tight">Our store locations</h1>
-          <p className="mt-4 max-w-2xl text-white/70 leading-relaxed">
-            {total} retail partners across Pakistan. Call a nearby store or contact Fiam Pakistan for
-            dealer support.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4 text-sm">
-            <a href={`mailto:${storeContact.email}`} className="text-white hover:text-accent">
-              {storeContact.email}
-            </a>
-            <a href={`tel:${storeContact.phoneTel}`} className="text-white hover:text-accent">
-              {storeContact.phone}
-            </a>
+        <div className="container-page grid gap-10 py-16 sm:py-20 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+          <div>
+            <p data-anim="fade" className="text-sm text-white/60">
+              Store locator
+            </p>
+            <h1 data-anim="lines" className="mt-3 text-4xl sm:text-6xl font-semibold tracking-tight">
+              Find Fiam near you
+            </h1>
+            <p data-anim="fade" data-delay="0.15" className="mt-4 max-w-xl text-white/70 leading-relaxed">
+              Retail partners across Pakistan. Search by city, area, or store name — then call ahead or
+              get directions.
+            </p>
+            <div data-anim="fade" data-delay="0.25" className="mt-6 flex flex-wrap gap-4 text-sm">
+              <a href={`mailto:${storeContact.email}`} className="text-white hover:text-accent">
+                {storeContact.email}
+              </a>
+              <a href={`tel:${storeContact.phoneTel}`} className="text-white hover:text-accent">
+                {storeContact.phone}
+              </a>
+            </div>
           </div>
+
+          <dl data-anim="stagger" data-delay="0.2" className="grid grid-cols-2 gap-6 border-t border-white/15 pt-6 lg:border-0 lg:pt-0">
+            <div>
+              <dt className="text-sm text-white/55">Stores</dt>
+              <dd className="mt-1 text-5xl font-semibold tabular-nums">
+                <span data-anim="count" data-value={total}>
+                  {total}
+                </span>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm text-white/55">Cities</dt>
+              <dd className="mt-1 text-5xl font-semibold tabular-nums">
+                <span data-anim="count" data-value={storeCities.length}>
+                  {storeCities.length}
+                </span>
+              </dd>
+            </div>
+          </dl>
         </div>
       </section>
 
-      <section className="container-page section-pad">
-        <div className="mb-8 flex flex-wrap gap-2">
-          {storeCities.map((city) => (
-            <a
-              key={city.city}
-              href={`#${city.city.toLowerCase()}`}
-              className="border border-line bg-white px-3 py-1.5 text-sm hover:border-accent hover:text-accent transition-colors"
-            >
-              {city.city}
-            </a>
-          ))}
-        </div>
+      <StoreLocator />
 
-        <div className="space-y-12">
-          {storeCities.map((city) => (
-            <div key={city.city} id={city.city.toLowerCase()} className="scroll-mt-28">
-              <h2 className="border-b border-line pb-3 text-2xl font-semibold tracking-tight">
-                {city.city}
-              </h2>
-              <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {city.stores.map((store) => (
-                  <article
-                    key={`${city.city}-${store.name}-${store.address}`}
-                    className="border border-line bg-white p-5"
-                  >
-                    <h3 className="text-base font-semibold text-ink">{store.name}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{store.address}</p>
-                    <ul className="mt-3 space-y-1">
-                      {store.phones.map((phone) => (
-                        <li key={phone}>
-                          <a
-                            href={`tel:${phone.replace(/[^\d+]/g, "")}`}
-                            className="text-sm font-medium text-accent hover:text-accent-deep"
-                          >
-                            {phone}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </article>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-12 border border-line bg-bg-muted p-6 sm:p-8">
+      <section className="container-page pb-20">
+        <div data-anim="fade" className="border border-line bg-bg-muted p-6 sm:p-8">
           <h2 className="text-xl font-semibold">Need help finding a dealer?</h2>
           <p className="mt-2 max-w-xl text-sm text-ink-soft leading-relaxed">
             Contact Fiam Pakistan and we will guide you to the right store or arrange a corporate

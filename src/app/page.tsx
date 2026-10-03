@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AtmosphereBand } from "@/components/AtmosphereBand";
+import { BrandMarquee } from "@/components/BrandMarquee";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { FaqSection } from "@/components/FaqSection";
 import { FeaturedSale } from "@/components/FeaturedSale";
@@ -52,6 +53,7 @@ export default function HomePage() {
     <>
       <JsonLd data={faqJsonLd(faqs)} />
       <Hero />
+      <BrandMarquee />
       <CategoryGrid />
       <SolarLights />
       <PopularProducts />

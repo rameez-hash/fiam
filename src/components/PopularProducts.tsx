@@ -9,19 +9,21 @@ export function PopularProducts() {
     <section className="section-pad bg-white">
       <div className="container-page">
         <div className="mb-10 max-w-xl">
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">Popular products</h2>
-          <p className="mt-2 text-ink-soft">
+          <h2 data-anim="lines" className="text-3xl sm:text-4xl font-semibold tracking-tight">
+            Popular products
+          </h2>
+          <p data-anim="fade" className="mt-2 text-ink-soft">
             Frequently requested fixtures from our commercial, outdoor, and decorative lines.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-anim="stagger" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
-        <div className="mt-10">
+        <div data-anim="fade" className="mt-10">
           <Link
             href="/products"
             className="inline-flex border border-ink px-6 py-3 text-sm font-medium hover:bg-ink hover:text-white transition-colors"

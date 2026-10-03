@@ -78,7 +78,7 @@ export default async function ProductDetailPage({ params }: Props) {
         </nav>
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="relative aspect-square bg-white">
+          <div data-anim="image" className="relative aspect-square overflow-hidden bg-white">
             <Image
               src={product.image}
               alt={`${product.name} ${product.series} product photo`}
@@ -90,14 +90,18 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
 
           <div>
-            <p className="text-[12px] font-semibold tracking-[0.2em] uppercase text-accent">
+            <p data-anim="fade" className="text-[12px] font-semibold tracking-[0.2em] uppercase text-accent">
               {product.series}
             </p>
-            <h1 className="mt-3 font-display text-5xl font-semibold tracking-tight">{product.name}</h1>
-            <p className="mt-4 text-lg text-ink-soft">{product.tagline}</p>
-            <p className="mt-6 leading-relaxed text-ink-soft">{product.description}</p>
+            <h1 data-anim="lines" data-delay="0.1" className="mt-3 font-display text-5xl font-semibold tracking-tight">
+              {product.name}
+            </h1>
+            <p data-anim="fade" data-delay="0.2" className="mt-4 text-lg text-ink-soft">{product.tagline}</p>
+            <p data-anim="fade" data-delay="0.28" className="mt-6 leading-relaxed text-ink-soft">
+              {product.description}
+            </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div data-anim="fade" data-delay="0.36" className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/contact"
                 className="inline-flex bg-accent px-7 py-3.5 text-[12px] font-semibold tracking-[0.16em] uppercase text-white hover:bg-accent-deep"
@@ -121,8 +125,8 @@ export default async function ProductDetailPage({ params }: Props) {
             </div>
 
             <div className="mt-12">
-              <h2 className="font-display text-2xl font-semibold">Technical data</h2>
-              <dl className="mt-6 divide-y divide-line border-y border-line">
+              <h2 data-anim="fade" className="font-display text-2xl font-semibold">Technical data</h2>
+              <dl data-anim="stagger" className="mt-6 divide-y divide-line border-y border-line">
                 {specEntries.map(([key, value]) => (
                   <div key={key} className="grid grid-cols-[1fr_1.2fr] gap-4 py-3 text-sm">
                     <dt className="capitalize text-ink-soft">
@@ -140,8 +144,10 @@ export default async function ProductDetailPage({ params }: Props) {
       {related.length > 0 && (
         <section className="section-pad bg-white border-t border-line">
           <div className="container-page">
-            <h2 className="font-display text-3xl font-semibold tracking-tight">Related products</h2>
-            <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <h2 data-anim="lines" className="font-display text-3xl font-semibold tracking-tight">
+              Related products
+            </h2>
+            <div data-anim="stagger" className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {related.map((item) => (
                 <ProductCard key={item.id} product={item} />
               ))}

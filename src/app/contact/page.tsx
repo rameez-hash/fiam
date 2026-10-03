@@ -27,8 +27,10 @@ export default function ContactPage() {
       />
       <section className="bg-bg-deep text-white">
         <div className="container-page py-24">
-          <p className="text-[12px] font-semibold tracking-[0.22em] uppercase text-white/55">Contact us</p>
-          <h1 className="mt-4 font-display text-5xl sm:text-6xl font-semibold tracking-tight">
+          <p data-anim="fade" className="text-[12px] font-semibold tracking-[0.22em] uppercase text-white/55">
+            Contact us
+          </p>
+          <h1 data-anim="lines" className="mt-4 font-display text-5xl sm:text-6xl font-semibold tracking-tight">
             Let&apos;s light your next project
           </h1>
         </div>
@@ -36,11 +38,11 @@ export default function ContactPage() {
 
       <section className="container-page section-pad grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <h2 className="font-display text-3xl font-semibold">Reach the team</h2>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft">
+          <h2 data-anim="lines" className="font-display text-3xl font-semibold">Reach the team</h2>
+          <p data-anim="fade" className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft">
             Have a question? Send a message and we will respond within 24 hours.
           </p>
-          <ul className="mt-8 space-y-5 text-sm">
+          <ul data-anim="stagger" className="mt-8 space-y-5 text-sm">
             <li>
               <p className="text-ink-soft">Email</p>
               <a href={`mailto:${company.email}`} className="mt-1 block text-lg font-medium hover:text-accent">
@@ -74,6 +76,8 @@ export default function ContactPage() {
         </div>
 
         <form
+          data-anim="fade"
+          data-delay="0.1"
           className="grid gap-5 border border-line bg-white p-8 lg:p-10"
           action={`mailto:${company.email}`}
           method="post"

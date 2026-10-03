@@ -9,17 +9,19 @@ export function FeaturedSale() {
     <section className="section-pad">
       <div className="container-page">
         <div className="mb-10 max-w-xl">
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">Featured fixtures</h2>
-          <p className="mt-2 text-ink-soft">
+          <h2 data-anim="lines" className="text-3xl sm:text-4xl font-semibold tracking-tight">
+            Featured fixtures
+          </h2>
+          <p data-anim="fade" className="mt-2 text-ink-soft">
             Selected models from commercial, module, outdoor, and decorative ranges.
           </p>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-anim="stagger" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-        <div className="mt-8">
+        <div data-anim="fade" className="mt-8">
           <Link href="/contact" className="text-sm font-medium text-ink link-underline">
             Request a quotation
           </Link>

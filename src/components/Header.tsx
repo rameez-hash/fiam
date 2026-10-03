@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 import { categories, company, getPopularProducts } from "@/data/products";
 import { Logo } from "./Logo";
 
@@ -21,9 +22,34 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const popular = getPopularProducts().slice(0, 4);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const shopOpenRef = useRef(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    shopOpenRef.current = shopOpen;
+  }, [shopOpen]);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    let lastY = window.scrollY;
+    let hidden = false;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      const goingDown = y > lastY + 4;
+      const goingUp = y < lastY - 4;
+      if (header && goingDown && y > 320 && !hidden && !shopOpenRef.current) {
+        hidden = true;
+        gsap.to(header, { yPercent: -100, duration: 0.45, ease: "power3.out" });
+      } else if (header && (goingUp || y < 120) && hidden) {
+        hidden = false;
+        gsap.to(header, { yPercent: 0, duration: 0.45, ease: "power3.out" });
+      }
+      if (goingDown || goingUp) lastY = y;
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -31,6 +57,14 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    const menu = menuRef.current;
+    if (open && menu && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.fromTo(
+        menu.querySelectorAll("[data-menu-item]"),
+        { y: 28, autoAlpha: 0 },
+        { y: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out", stagger: 0.05, delay: 0.15 }
+      );
+    }
     return () => {
       document.body.style.overflow = "";
     };
@@ -51,7 +85,8 @@ export function Header() {
       </div>
 
       <header
-        className={`sticky top-0 z-50 border-b border-line bg-white ${scrolled ? "shadow-sm" : ""}`}
+        ref={headerRef}
+        className={`sticky top-0 z-50 border-b border-line bg-white transition-shadow ${scrolled ? "shadow-sm" : ""}`}
       >
         <div className="container-page flex h-16 items-center justify-between gap-6">
           <Logo priority size="md" variant="dark" />
@@ -167,7 +202,8 @@ export function Header() {
       </header>
 
       <div
-        className={`fixed inset-0 z-[70] bg-bg-deep text-white transition-transform duration-400 lg:hidden ${
+        ref={menuRef}
+        className={`fixed inset-0 z-[70] bg-bg-deep text-white transition-transform duration-500 ease-[cubic-bezier(0.7,0,0.2,1)] lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -189,12 +225,12 @@ export function Header() {
           </div>
           <div className="flex flex-col gap-5 text-2xl font-medium">
             {nav.map((item) => (
-              <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
+              <Link key={item.href} href={item.href} onClick={() => setOpen(false)} data-menu-item>
                 {item.label}
               </Link>
             ))}
           </div>
-          <div className="mt-10 border-t border-white/15 pt-8">
+          <div className="mt-10 border-t border-white/15 pt-8" data-menu-item>
             <p className="text-sm text-white/50">Shop by category</p>
             <div className="mt-4 grid gap-3">
               {categories.map((cat) => (

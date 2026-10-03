@@ -65,17 +65,17 @@ export default function CorporatePage() {
 
       <section className="bg-bg-deep text-white">
         <div className="container-page py-20 lg:py-24">
-          <p className="text-[12px] font-semibold tracking-[0.22em] uppercase text-white/55">
+          <p data-anim="fade" className="text-[12px] font-semibold tracking-[0.22em] uppercase text-white/55">
             Corporate
           </p>
-          <h1 className="mt-4 max-w-3xl font-display text-5xl sm:text-6xl font-semibold tracking-tight">
+          <h1 data-anim="lines" className="mt-4 max-w-3xl font-display text-5xl sm:text-6xl font-semibold tracking-tight">
             Product &amp; bulk orders for companies
           </h1>
-          <p className="mt-5 max-w-2xl text-white/70 leading-relaxed">
+          <p data-anim="fade" data-delay="0.15" className="mt-5 max-w-2xl text-white/70 leading-relaxed">
             Need fixtures for a project or a wholesale quantity? Use the corporate form below — Fiam Pakistan
             will follow up on product specs, availability, and bulk quotations.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div data-anim="fade" data-delay="0.25" className="mt-8 flex flex-wrap gap-4">
             <a
               href="#corporate-form"
               className="inline-flex bg-accent px-7 py-3.5 text-[12px] font-semibold tracking-[0.16em] uppercase text-white hover:bg-accent-deep"
@@ -92,7 +92,7 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      <section className="container-page section-pad grid gap-6 md:grid-cols-3">
+      <section data-anim="stagger" className="container-page section-pad grid gap-6 md:grid-cols-3">
         {benefits.map((item) => (
           <div key={item.title} className="border border-line bg-white p-7">
             <h2 className="font-display text-2xl font-semibold tracking-tight">{item.title}</h2>
@@ -120,7 +120,7 @@ export default function CorporatePage() {
 
       <section id="corporate-form" className="container-page section-pad grid gap-12 lg:grid-cols-[0.85fr_1.15fr] scroll-mt-28">
         <div>
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight">
+          <h2 data-anim="lines" className="font-display text-3xl sm:text-4xl font-semibold tracking-tight">
             Tell us what you need
           </h2>
           <p className="mt-4 text-ink-soft leading-relaxed">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { Motion } from "@/components/Motion";
 import { company } from "@/data/products";
 import { JsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
@@ -57,14 +58,20 @@ export const metadata: Metadata = {
   },
 };
 
+const motionBootScript = `(function(){var d=document.documentElement;d.classList.add("motion-ready");setTimeout(function(){if(d.dataset.motion!=="on")d.classList.remove("motion-ready")},3500)})();`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${montserrat.variable} h-full`}>
+    <html lang="en" className={`${montserrat.variable} h-full`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: motionBootScript }} />
+      </head>
       <body className="min-h-full flex flex-col antialiased font-sans">
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Motion />
       </body>
     </html>
   );

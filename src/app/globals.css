@@ -76,3 +76,33 @@ body {
 .link-underline:hover {
   background-size: 100% 1px;
 }
+
+html.motion-ready [data-anim],
+html.motion-ready .hero-fade {
+  visibility: hidden;
+}
+
+html.motion-ready .hero-line {
+  transform: translateY(110%);
+}
+
+.split-line {
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.marquee-track {
+  will-change: transform;
+}
+
+mark.hl {
+  background: #ffe2cc;
+  color: inherit;
+  padding: 0 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

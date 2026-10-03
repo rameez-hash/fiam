@@ -44,18 +44,20 @@ export default function ProjectsPage() {
       />
       <section className="bg-bg-deep text-white">
         <div className="container-page py-24">
-          <p className="text-[12px] font-semibold tracking-[0.22em] uppercase text-white/55">Projects</p>
-          <h1 className="mt-4 font-display text-5xl sm:text-6xl font-semibold tracking-tight">
+          <p data-anim="fade" className="text-[12px] font-semibold tracking-[0.22em] uppercase text-white/55">
+            Projects
+          </p>
+          <h1 data-anim="lines" className="mt-4 font-display text-5xl sm:text-6xl font-semibold tracking-tight">
             Commercial applications
           </h1>
-          <p className="mt-5 max-w-2xl text-white/70 leading-relaxed">
+          <p data-anim="fade" data-delay="0.15" className="mt-5 max-w-2xl text-white/70 leading-relaxed">
             Fiam Pakistan luminaires are specified across commercial interiors, outdoor landscapes, and decorative
             hospitality environments.
           </p>
         </div>
       </section>
 
-      <section className="container-page section-pad grid gap-6 md:grid-cols-2">
+      <section data-anim="stagger" className="container-page section-pad grid gap-6 md:grid-cols-2">
         {projects.map((project) => (
           <Link
             key={project.title}
