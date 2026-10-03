@@ -10,7 +10,8 @@ export type CityStores = {
 };
 
 export const storeContact = {
-  email: "info@fiamlights.com.pk",
+  email: "info@fiam.com.pk",
+  altEmail: "info@fiamlights.com.pk",
   phone: "+92 321 8208116",
   phoneTel: "+923218208116",
 };

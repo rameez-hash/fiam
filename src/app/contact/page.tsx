@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { company } from "@/data/products";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Fiam Pakistan",
   description:
-    "Contact Fiam Pakistan for LED product specifications, samples, and project quotations. Email info@fiam.com.pk.",
+    "Contact Fiam Lighting Pakistan for product specs, samples, and project quotes. Call +92 321 8208116 or email info@fiam.com.pk.",
   path: "/contact",
-  keywords: ["contact Fiam Pakistan", "LED lighting quote", "info@fiam.com.pk"],
+  keywords: [
+    "contact Fiam Pakistan",
+    "LED lighting quote",
+    "info@fiam.com.pk",
+    "+92 321 8208116",
+  ],
 });
 
 export default function ContactPage() {
@@ -31,35 +37,48 @@ export default function ContactPage() {
       <section className="container-page section-pad grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <h2 className="font-display text-3xl font-semibold">Reach the team</h2>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft">
+            Have a question? Send a message and we will respond within 24 hours.
+          </p>
           <ul className="mt-8 space-y-5 text-sm">
             <li>
               <p className="text-ink-soft">Email</p>
               <a href={`mailto:${company.email}`} className="mt-1 block text-lg font-medium hover:text-accent">
                 {company.email}
               </a>
+              <a href={`mailto:${company.altEmail}`} className="mt-1 block hover:text-accent">
+                {company.altEmail}
+              </a>
             </li>
             <li>
               <p className="text-ink-soft">Phone</p>
-              <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="mt-1 block text-lg font-medium hover:text-accent">
+              <a
+                href={`tel:${company.phoneTel}`}
+                className="mt-1 block text-lg font-medium hover:text-accent"
+              >
                 {company.phone}
               </a>
-              <a href={`tel:${company.mobile.replace(/\s/g, "")}`} className="mt-1 block hover:text-accent">
-                {company.mobile}
-              </a>
             </li>
             <li>
-              <p className="text-ink-soft">Fax</p>
-              <p className="mt-1 font-medium">{company.fax}</p>
+              <p className="text-ink-soft">Hours</p>
+              <p className="mt-1 font-medium">{company.hours}</p>
             </li>
             <li>
-              <p className="text-ink-soft">Addresses</p>
+              <p className="text-ink-soft">Address</p>
               <p className="mt-1 leading-relaxed">{company.address}</p>
-              <p className="mt-2 leading-relaxed">{company.address2}</p>
+              <Link href="/stores" className="mt-2 inline-block text-sm font-medium text-accent hover:underline">
+                View all store locations
+              </Link>
             </li>
           </ul>
         </div>
 
-        <form className="border border-line bg-white p-8 lg:p-10 grid gap-5">
+        <form
+          className="grid gap-5 border border-line bg-white p-8 lg:p-10"
+          action={`mailto:${company.email}`}
+          method="post"
+          encType="text/plain"
+        >
           <h2 className="font-display text-2xl font-semibold">Send a message</h2>
           <label className="grid gap-2 text-sm">
             <span className="font-medium">Name</span>
@@ -91,7 +110,7 @@ export default function ContactPage() {
               name="message"
               required
               rows={5}
-              className="border border-line bg-bg px-4 py-3 outline-none focus:border-accent resize-y"
+              className="resize-y border border-line bg-bg px-4 py-3 outline-none focus:border-accent"
             />
           </label>
           <button
@@ -101,7 +120,7 @@ export default function ContactPage() {
             Submit inquiry
           </button>
           <p className="text-xs text-ink-soft">
-            This demo form is front-end only. Wire it to your CRM or email endpoint for production.
+            Opens your email app to send the inquiry to {company.email}.
           </p>
         </form>
       </section>

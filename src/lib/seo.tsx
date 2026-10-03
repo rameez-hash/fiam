@@ -79,28 +79,25 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: company.name,
     legalName: company.legalName,
+    alternateName: company.brandName,
     url: absoluteUrl("/"),
     logo: absoluteUrl("/fiam-logo.png"),
     email: company.email,
     telephone: company.phone,
-    address: [
-      {
-        "@type": "PostalAddress",
-        streetAddress: company.address,
-        addressCountry: "CN",
-      },
-      {
-        "@type": "PostalAddress",
-        streetAddress: company.address2,
-        addressCountry: "HK",
-      },
-    ],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: company.addressShort,
+      addressLocality: "Karachi",
+      addressCountry: "PK",
+    },
     contactPoint: {
       "@type": "ContactPoint",
       telephone: company.phone,
       contactType: "sales",
       email: company.salesEmail,
-      availableLanguage: ["English", "Chinese"],
+      availableLanguage: ["English", "Urdu"],
+      areaServed: "PK",
+      hoursAvailable: "Mo-Sa 10:00-21:00",
     },
   };
 }

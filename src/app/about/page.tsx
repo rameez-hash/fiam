@@ -6,9 +6,14 @@ import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "About Fiam Pakistan",
   description:
-    "Learn about Fiam Pakistan — LED lighting for commercial, outdoor, and decorative projects across Pakistan. Contact info@fiam.com.pk.",
+    "Pak Burma Traders is the exclusive importer of FIAM Lighting in Pakistan — commercial, decorative, outdoor, and LED lighting since 2002. Contact info@fiam.com.pk.",
   path: "/about",
-  keywords: ["about Fiam Pakistan", "fiam.com.pk", "LED lighting Pakistan"],
+  keywords: [
+    "about Fiam Pakistan",
+    "Pak Burma Traders",
+    "FIAM Lighting Pakistan",
+    "fiam.com.pk",
+  ],
 });
 
 export default function AboutPage() {
@@ -24,7 +29,7 @@ export default function AboutPage() {
         <div className="container-page py-24">
           <p className="text-[12px] font-semibold tracking-[0.22em] uppercase text-white/55">About us</p>
           <h1 className="mt-4 max-w-3xl font-display text-5xl sm:text-6xl font-semibold tracking-tight">
-            Lighting professionals for spaces that need atmosphere and precision
+            Exclusive FIAM Lighting importer for Pakistan
           </h1>
         </div>
       </section>
@@ -32,13 +37,25 @@ export default function AboutPage() {
       <section className="container-page section-pad grid gap-12 lg:grid-cols-2">
         <div>
           <h2 className="font-display text-3xl font-semibold tracking-tight">Who we are</h2>
-          <p className="mt-5 text-ink-soft leading-relaxed">{company.description}</p>
-          <p className="mt-4 text-ink-soft leading-relaxed">
-            As {company.legalName}, we supply linear commercial systems, LED modules, outdoor step lights, and
-            decorative panels with clear technical documentation for architects, contractors, and distributors.
+          <p className="mt-5 text-ink-soft leading-relaxed">{company.about}</p>
+          <p className="mt-4 text-ink-soft leading-relaxed">{company.companyGroup}</p>
+
+          <h3 className="mt-10 font-display text-2xl font-semibold tracking-tight">Our brands</h3>
+          <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+            Fiam is a nationwide brand with distributors across Pakistan. Product lines are organised under
+            four brands for clearer category focus.
           </p>
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+            {company.brands.map((brand) => (
+              <li key={brand.name}>
+                <p className="text-sm font-semibold text-ink">{brand.name}</p>
+                <p className="mt-1 text-sm text-ink-soft">{brand.focus}</p>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="bg-white p-8 lg:p-10 border border-line">
+
+        <div className="border border-line bg-white p-8 lg:p-10">
           <h3 className="font-display text-2xl font-semibold">Company facts</h3>
           <dl className="mt-6 space-y-4 text-sm">
             <div>
@@ -46,24 +63,53 @@ export default function AboutPage() {
               <dd className="mt-1 font-medium">{company.legalName}</dd>
             </div>
             <div>
-              <dt className="text-ink-soft">China</dt>
+              <dt className="text-ink-soft">Brand</dt>
+              <dd className="mt-1 font-medium">{company.brandName}</dd>
+            </div>
+            <div>
+              <dt className="text-ink-soft">Address</dt>
               <dd className="mt-1 font-medium">{company.address}</dd>
             </div>
             <div>
-              <dt className="text-ink-soft">Hong Kong</dt>
-              <dd className="mt-1 font-medium">{company.address2}</dd>
+              <dt className="text-ink-soft">Hours</dt>
+              <dd className="mt-1 font-medium">{company.hours}</dd>
+            </div>
+            <div>
+              <dt className="text-ink-soft">Phone</dt>
+              <dd className="mt-1 font-medium">
+                <a href={`tel:${company.phoneTel}`} className="hover:text-accent">
+                  {company.phone}
+                </a>
+              </dd>
             </div>
             <div>
               <dt className="text-ink-soft">Email</dt>
-              <dd className="mt-1 font-medium">{company.email}</dd>
+              <dd className="mt-1 font-medium">
+                <a href={`mailto:${company.email}`} className="hover:text-accent">
+                  {company.email}
+                </a>
+              </dd>
+              <dd className="mt-1 font-medium">
+                <a href={`mailto:${company.altEmail}`} className="hover:text-accent">
+                  {company.altEmail}
+                </a>
+              </dd>
             </div>
           </dl>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex bg-accent px-6 py-3 text-[12px] font-semibold tracking-[0.14em] uppercase text-white hover:bg-accent-deep"
-          >
-            Contact Fiam Pakistan
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex bg-accent px-6 py-3 text-[12px] font-semibold tracking-[0.14em] uppercase text-white hover:bg-accent-deep"
+            >
+              Contact us
+            </Link>
+            <Link
+              href="/stores"
+              className="inline-flex border border-line px-6 py-3 text-[12px] font-semibold tracking-[0.14em] uppercase text-ink hover:border-ink"
+            >
+              Store locations
+            </Link>
+          </div>
         </div>
       </section>
     </>

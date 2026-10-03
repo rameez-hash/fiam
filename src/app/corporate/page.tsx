@@ -135,6 +135,12 @@ export default function CorporatePage() {
               </a>
             </li>
             <li>
+              <p className="text-ink-soft">Phone</p>
+              <a href={`tel:${company.phoneTel}`} className="mt-1 block text-lg font-medium hover:text-accent">
+                {company.phone}
+              </a>
+            </li>
+            <li>
               <p className="text-ink-soft">Website</p>
               <a href={company.url} className="mt-1 block font-medium hover:text-accent">
                 fiam.com.pk

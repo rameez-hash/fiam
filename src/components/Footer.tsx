@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { categories, company } from "@/data/products";
-import { storeContact } from "@/data/stores";
 
 const informationLinks = [
   { href: "/about", label: "About our company" },
@@ -122,8 +121,8 @@ export function Footer() {
                     <path d="M6.5 4.5h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.5v3A2 2 0 0 1 18 20 14 14 0 0 1 4 6a2 2 0 0 1 2.5-1.5Z" />
                   </svg>
                 </span>
-                <a href={`tel:${storeContact.phoneTel}`} className="pt-1.5 hover:text-white">
-                  {storeContact.phone}
+                <a href={`tel:${company.phoneTel}`} className="pt-1.5 hover:text-white">
+                  {company.phone}
                 </a>
               </li>
               <li className="flex items-start gap-3">

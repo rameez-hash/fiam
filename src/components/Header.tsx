@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { categories, getPopularProducts } from "@/data/products";
+import { categories, company, getPopularProducts } from "@/data/products";
 import { Logo } from "./Logo";
 
 const nav = [
@@ -40,12 +40,12 @@ export function Header() {
     <>
       <div className="relative z-[60] border-b border-white/10 bg-bg-deep text-sm text-white/70">
         <div className="container-page flex items-center justify-between gap-4 py-2">
-          <a href="mailto:info@fiam.com.pk" className="hover:text-white transition-colors">
-            info@fiam.com.pk
+          <a href={`mailto:${company.email}`} className="hover:text-white transition-colors">
+            {company.email}
           </a>
-          <p className="hidden sm:block">Lighting supply for projects across Pakistan</p>
-          <a href="tel:+8676086925523" className="hover:text-white transition-colors">
-            +86-760-8692 5523
+          <p className="hidden sm:block">{company.hours}</p>
+          <a href={`tel:${company.phoneTel}`} className="hover:text-white transition-colors">
+            {company.phone}
           </a>
         </div>
       </div>
