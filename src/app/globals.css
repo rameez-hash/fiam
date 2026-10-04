@@ -91,10 +91,6 @@ html.motion-ready .hero-line {
   margin-bottom: -0.08em;
 }
 
-.marquee-track {
-  will-change: transform;
-}
-
 mark.hl {
   background: #ffe2cc;
   color: inherit;
