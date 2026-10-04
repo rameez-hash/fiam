@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { AtmosphereBand } from "@/components/AtmosphereBand";
-import { BenefitsSection } from "@/components/BenefitsSection";
 import { CategoryGrid } from "@/components/CategoryGrid";
+import { LayeredLighting } from "@/components/LayeredLighting";
 import { FaqSection } from "@/components/FaqSection";
 import { FeaturedSale } from "@/components/FeaturedSale";
 import { Hero } from "@/components/Hero";
@@ -55,7 +55,7 @@ export default function HomePage() {
       <Hero />
       <CategoryGrid />
       <AtmosphereBand />
-      <BenefitsSection />
+      <LayeredLighting />
       <SolarLights />
       <PopularProducts />
       <Testimonials />
