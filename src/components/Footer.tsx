@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { categories, company } from "@/data/products";
+import { topCategories } from "@/data/catalog";
+import { company } from "@/data/products";
 
 const informationLinks = [
   { href: "/about", label: "About our company" },
@@ -97,7 +98,7 @@ export function Footer() {
           <div>
             <h3 className="text-base font-semibold">Collections</h3>
             <ul className="mt-5 space-y-3 text-sm text-white/65">
-              {categories.map((cat) => (
+              {topCategories.map((cat) => (
                 <li key={cat.slug}>
                   <Link href={`/categories/${cat.slug}`} className="transition-colors hover:text-white">
                     {cat.name}

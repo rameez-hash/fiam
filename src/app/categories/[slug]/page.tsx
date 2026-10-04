@@ -2,99 +2,174 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { NodeCard } from "@/components/NodeCard";
 import { ProductCard } from "@/components/ProductCard";
 import {
-  categories,
-  getCategory,
-  getProductsByCategory,
-} from "@/data/products";
+  catalogNodes,
+  countProducts,
+  getAncestors,
+  getChildren,
+  getNode,
+  getNodeById,
+  getNodeProducts,
+  getRootCategory,
+  nodeImage,
+  topCategories,
+} from "@/data/catalog";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return categories.map((c) => ({ slug: c.slug }));
+  return catalogNodes.map((n) => ({ slug: n.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const category = getCategory(slug);
-  if (!category) return {};
+  const node = getNode(slug);
+  if (!node) return {};
+  const root = getRootCategory(node);
+  const top = node.depth === 0 ? root : undefined;
+  const trail = getAncestors(node).map((n) => n.name);
   return buildMetadata({
-    title: category.seoTitle,
-    description: category.seoDescription,
-    path: `/categories/${category.slug}`,
-    image: category.image,
-    keywords: [category.name, category.shortName, "FIAM category"],
+    title: top?.seoTitle ?? `${node.name} — ${root?.name ?? "FIAM"}`,
+    description:
+      top?.seoDescription ??
+      `${node.name} by FIAM in Pakistan: ${countProducts(node)} models with full technical data, images and sizes. Part of the ${[...trail].reverse().join(" / ")} range.`,
+    path: `/categories/${node.slug}`,
+    image: nodeImage(node) || undefined,
+    keywords: [node.name, ...trail, "FIAM Pakistan"],
   });
 }
 
 export default async function CategoryPage({ params }: Props) {
   const { slug } = await params;
-  const category = getCategory(slug);
-  if (!category) notFound();
+  const node = getNode(slug);
+  if (!node) notFound();
 
-  const items = getProductsByCategory(category.slug);
+  const ancestors = getAncestors(node);
+  const root = getRootCategory(node);
+  const children = getChildren(node);
+  const items = getNodeProducts(node);
+  const parent = node.parentId ? getNodeById(node.parentId) : undefined;
+  const siblings = parent ? getChildren(parent) : [];
+  const isTop = node.depth === 0;
+  const total = countProducts(node);
+  const chips = isTop
+    ? topCategories.map((c) => ({ id: c.id, slug: c.slug, label: c.shortName }))
+    : siblings.map((s) => ({ id: s.id, slug: s.slug, label: s.name }));
+
+  const crumbs = [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    ...ancestors.map((a) => ({ name: a.name, path: `/categories/${a.slug}` })),
+    { name: node.name, path: `/categories/${node.slug}` },
+  ];
 
   return (
     <>
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Products", path: "/products" },
-          { name: category.name, path: `/categories/${category.slug}` },
-        ])}
-      />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
 
-      <section className="relative isolate min-h-[48vh] overflow-hidden bg-bg-deep text-white">
-        <div data-parallax="16" className="absolute inset-x-0 -inset-y-[10%]">
-          <Image
-            src={category.image}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover opacity-40"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20" />
-        <div className="relative container-page flex min-h-[48vh] flex-col justify-end pb-16 pt-28">
-          <p data-anim="fade" className="text-[12px] font-semibold tracking-[0.22em] uppercase text-white/60">
-            {category.highlight}
-          </p>
-          <h1 data-anim="lines" className="mt-3 max-w-3xl font-display text-5xl sm:text-6xl font-semibold tracking-tight">
-            {category.name}
-          </h1>
-          <p data-anim="fade" data-delay="0.15" className="mt-5 max-w-2xl text-white/75 leading-relaxed">
-            {category.description}
-          </p>
-        </div>
-      </section>
+      {isTop && root ? (
+        <section className="relative isolate min-h-[48vh] overflow-hidden bg-bg-deep text-white">
+          {node.image && (
+            <div data-parallax="16" className="absolute inset-x-0 -inset-y-[10%]">
+              <Image src={node.image} alt="" fill priority sizes="100vw" className="object-cover opacity-55" />
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/10" />
+          <div className="container-page relative flex min-h-[48vh] flex-col justify-end pb-16 pt-28">
+            <p data-anim="fade" className="text-[12px] font-semibold uppercase tracking-[0.22em] text-white/60">
+              {root.highlight}
+            </p>
+            <h1 data-anim="lines" className="mt-3 max-w-3xl text-5xl font-semibold tracking-tight sm:text-6xl">
+              {node.name}
+            </h1>
+            <p data-anim="fade" data-delay="0.15" className="mt-5 max-w-2xl leading-relaxed text-white/75">
+              {root.description}
+            </p>
+          </div>
+        </section>
+      ) : (
+        <section className="border-b border-line bg-white">
+          <div className="container-page py-12 lg:py-16">
+            <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-soft" aria-label="Breadcrumb">
+              <Link href="/products" className="hover:text-ink">
+                Products
+              </Link>
+              {ancestors.map((a) => (
+                <span key={a.id} className="flex items-center gap-2">
+                  <span aria-hidden>/</span>
+                  <Link href={`/categories/${a.slug}`} className="hover:text-ink">
+                    {a.name}
+                  </Link>
+                </span>
+              ))}
+            </nav>
+            <div className="mt-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <h1 data-anim="lines" className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+                {node.name}
+              </h1>
+              <p data-anim="fade" className="text-sm text-ink-soft">
+                {total} {total === 1 ? "model" : "models"}
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
 
-      <section className="container-page py-8 flex flex-wrap gap-3">
-        {categories.map((cat) => (
+      <nav className="container-page flex flex-wrap gap-2 py-8" aria-label={isTop ? "Categories" : "Related series"}>
+        {chips.map((n) => (
           <Link
-            key={cat.slug}
-            href={`/categories/${cat.slug}`}
-            className={`border px-4 py-2 text-[11px] font-semibold tracking-[0.12em] uppercase transition-colors ${
-              cat.slug === category.slug
+            key={n.id}
+            href={`/categories/${n.slug}`}
+            className={`border px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors ${
+              n.id === node.id
                 ? "border-accent bg-accent text-white"
                 : "border-line bg-white hover:border-accent hover:text-accent"
             }`}
           >
-            {cat.shortName}
+            {n.label}
           </Link>
         ))}
-      </section>
+      </nav>
 
-      <section className="container-page pb-20">
-        <p className="mb-8 text-sm text-ink-soft">{items.length} products</p>
-        <div data-anim="stagger" className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {items.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
+      {children.length > 0 && (
+        <section className="container-page pb-16">
+          <p className="mb-6 text-sm text-ink-soft">
+            {children.length} {isTop ? "series" : "product families"}
+          </p>
+          <div data-anim="stagger" className="grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
+            {children.map((child) => (
+              <NodeCard key={child.id} node={child} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {items.length > 0 && (
+        <section className="container-page pb-20">
+          <p className="mb-6 text-sm text-ink-soft">
+            {items.length} {items.length === 1 ? "model" : "models"}
+          </p>
+          <div data-anim="stagger" className="grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
+            {items.map((product) => (
+              <ProductCard key={product.id} product={product} label={node.name} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {children.length === 0 && items.length === 0 && (
+        <section className="container-page pb-20">
+          <p className="text-ink-soft">
+            Models for this series are available on request.{" "}
+            <Link href="/contact" className="text-ink link-underline">
+              Contact us
+            </Link>
+          </p>
+        </section>
+      )}
     </>
   );
 }

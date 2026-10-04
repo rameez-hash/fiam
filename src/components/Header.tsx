@@ -4,12 +4,20 @@ import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { categories, company, getPopularProducts } from "@/data/products";
+import { company } from "@/data/products";
 import { Logo } from "./Logo";
+
+export type MenuCategory = {
+  slug: string;
+  name: string;
+  image: string;
+  count: number;
+  series: { slug: string; name: string }[];
+};
 
 const nav = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Shop" },
+  { href: "/products", label: "Products" },
   { href: "/stores", label: "Stores" },
   { href: "/corporate", label: "Corporate" },
   { href: "/projects", label: "Projects" },
@@ -17,11 +25,13 @@ const nav = [
   { href: "/contact", label: "Contact" },
 ];
 
-export function Header() {
+export function Header({ menu }: { menu: MenuCategory[] }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
-  const popular = getPopularProducts().slice(0, 4);
+  const [activeCat, setActiveCat] = useState(0);
+  const [mobileCat, setMobileCat] = useState<number | null>(null);
+  const current = menu[activeCat] ?? menu[0];
   const headerRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const shopOpenRef = useRef(false);
@@ -93,67 +103,99 @@ export function Header() {
 
           <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-ink">
             {nav.map((item) =>
-              item.label === "Shop" ? (
+              item.label === "Products" ? (
                 <div
                   key={item.href}
-                  className="relative"
+                  className="flex h-16 items-center"
                   onMouseEnter={() => setShopOpen(true)}
                   onMouseLeave={() => setShopOpen(false)}
                 >
-                  <Link href={item.href} className="py-2 hover:text-accent transition-colors">
+                  <Link
+                    href={item.href}
+                    aria-expanded={shopOpen}
+                    onFocus={() => setShopOpen(true)}
+                    className="flex items-center gap-1.5 py-2 transition-colors hover:text-accent"
+                  >
                     {item.label}
+                    <svg
+                      viewBox="0 0 10 6"
+                      className={`h-1.5 w-2.5 transition-transform ${shopOpen ? "rotate-180" : ""}`}
+                      aria-hidden
+                    >
+                      <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.4" />
+                    </svg>
                   </Link>
                   <div
-                    className={`absolute left-1/2 top-full z-50 w-[min(880px,90vw)] -translate-x-1/2 pt-2 transition-all duration-200 ${
+                    className={`absolute inset-x-0 top-full z-50 transition-all duration-200 ${
                       shopOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
                     }`}
                   >
-                    <div className="grid grid-cols-[0.9fr_1.4fr] overflow-hidden border border-line bg-white shadow-lg">
-                      <div className="border-r border-line bg-bg p-5">
-                        <p className="text-xs font-medium text-ink-soft">Categories</p>
-                        <div className="mt-3 space-y-0.5">
-                          {categories.map((cat) => (
-                            <Link
-                              key={cat.slug}
-                              href={`/categories/${cat.slug}`}
-                              className="block px-2 py-2 text-sm text-ink hover:bg-white hover:text-accent transition-colors"
-                            >
-                              {cat.name}
-                            </Link>
-                          ))}
+                    <div className="border-b border-line bg-white shadow-lg">
+                      <div className="container-page grid grid-cols-[240px_1fr_260px] gap-8 py-7">
+                        <div className="border-r border-line pr-6">
+                          <p className="text-xs font-medium text-ink-soft">Categories</p>
+                          <div className="mt-3 space-y-0.5">
+                            {menu.map((cat, i) => (
+                              <Link
+                                key={cat.slug}
+                                href={`/categories/${cat.slug}`}
+                                onMouseEnter={() => setActiveCat(i)}
+                                onFocus={() => setActiveCat(i)}
+                                onClick={() => setShopOpen(false)}
+                                className={`flex items-center justify-between px-3 py-2.5 text-sm transition-colors ${
+                                  i === activeCat ? "bg-bg text-accent" : "text-ink hover:bg-bg"
+                                }`}
+                              >
+                                <span>{cat.name}</span>
+                                <span className="text-xs tabular-nums text-ink-soft">{cat.count}</span>
+                              </Link>
+                            ))}
+                          </div>
+                          <Link
+                            href="/products"
+                            onClick={() => setShopOpen(false)}
+                            className="mt-5 inline-flex px-3 text-sm font-medium text-accent"
+                          >
+                            All products →
+                          </Link>
                         </div>
-                        <Link href="/products" className="mt-4 inline-flex text-sm font-medium text-accent">
-                          All products →
-                        </Link>
-                      </div>
 
-                      <div className="p-5">
-                        <p className="text-xs font-medium text-ink-soft">Popular products</p>
-                        <div className="mt-3 grid grid-cols-2 gap-3">
-                          {popular.map((product) => (
-                            <Link
-                              key={product.id}
-                              href={`/products/${product.slug}`}
-                              className="group flex gap-3 p-1.5 hover:bg-bg transition-colors"
-                            >
-                              <div className="relative h-14 w-14 shrink-0 overflow-hidden bg-bg">
-                                <Image
-                                  src={product.image}
-                                  alt={product.name}
-                                  fill
-                                  sizes="56px"
-                                  className="object-contain p-1"
-                                />
-                              </div>
-                              <div className="min-w-0 self-center">
-                                <p className="truncate text-sm font-medium text-ink group-hover:text-accent">
-                                  {product.name}
-                                </p>
-                                <p className="mt-0.5 line-clamp-1 text-xs text-ink-soft">{product.tagline}</p>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
+                        {current && (
+                          <div className="min-w-0">
+                            <p className="text-xs font-medium text-ink-soft">{current.name} series</p>
+                            <div className="mt-3 grid max-h-[52vh] grid-cols-2 gap-x-6 overflow-y-auto xl:grid-cols-3">
+                              {current.series.map((s) => (
+                                <Link
+                                  key={s.slug}
+                                  href={`/categories/${s.slug}`}
+                                  onClick={() => setShopOpen(false)}
+                                  className="block border-b border-line/60 py-2 text-sm leading-snug text-ink transition-colors hover:text-accent"
+                                >
+                                  {s.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {current?.image && (
+                          <Link
+                            href={`/categories/${current.slug}`}
+                            onClick={() => setShopOpen(false)}
+                            className="group relative block min-h-[240px] overflow-hidden bg-bg"
+                          >
+                            <Image
+                              src={current.image}
+                              alt={current.name}
+                              fill
+                              sizes="260px"
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-sm font-medium text-white">
+                              Explore {current.name}
+                            </span>
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -231,17 +273,41 @@ export function Header() {
             ))}
           </div>
           <div className="mt-10 border-t border-white/15 pt-8" data-menu-item>
-            <p className="text-sm text-white/50">Shop by category</p>
-            <div className="mt-4 grid gap-3">
-              {categories.map((cat) => (
-                <Link
-                  key={cat.slug}
-                  href={`/categories/${cat.slug}`}
-                  onClick={() => setOpen(false)}
-                  className="text-sm text-white/75"
-                >
-                  {cat.name}
-                </Link>
+            <p className="text-sm text-white/50">Product categories</p>
+            <div className="mt-3 divide-y divide-white/10">
+              {menu.map((cat, i) => (
+                <div key={cat.slug}>
+                  <button
+                    type="button"
+                    aria-expanded={mobileCat === i}
+                    onClick={() => setMobileCat(mobileCat === i ? null : i)}
+                    className="flex w-full items-center justify-between py-3 text-left text-base text-white/85"
+                  >
+                    {cat.name}
+                    <span className="text-lg leading-none text-white/50">{mobileCat === i ? "−" : "+"}</span>
+                  </button>
+                  {mobileCat === i && (
+                    <div className="grid gap-2.5 pb-4 pl-3">
+                      <Link
+                        href={`/categories/${cat.slug}`}
+                        onClick={() => setOpen(false)}
+                        className="text-sm font-medium text-white"
+                      >
+                        View all {cat.name}
+                      </Link>
+                      {cat.series.map((s) => (
+                        <Link
+                          key={s.slug}
+                          href={`/categories/${s.slug}`}
+                          onClick={() => setOpen(false)}
+                          className="text-sm text-white/65"
+                        >
+                          {s.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </div>

@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Motion } from "@/components/Motion";
+import { countProducts, getChildren, nodeImage, topCategories } from "@/data/catalog";
 import { company } from "@/data/products";
 import { JsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
@@ -68,7 +69,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col antialiased font-sans">
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
-        <Header />
+        <Header
+          menu={topCategories.map((cat) => ({
+            slug: cat.slug,
+            name: cat.name,
+            image: nodeImage(cat),
+            count: countProducts(cat),
+            series: getChildren(cat).map((s) => ({ slug: s.slug, name: s.name })),
+          }))}
+        />
         <main className="flex-1">{children}</main>
         <Footer />
         <Motion />

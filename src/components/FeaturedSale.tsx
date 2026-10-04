@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { getFeaturedProducts } from "@/data/products";
+import { getShowcaseProducts } from "@/data/catalog";
 import { ProductCard } from "./ProductCard";
 
 export function FeaturedSale() {
-  const items = getFeaturedProducts().slice(0, 4);
+  const items = getShowcaseProducts(4, 3);
 
   return (
     <section className="section-pad">
@@ -16,7 +16,7 @@ export function FeaturedSale() {
             Selected models from commercial, module, outdoor, and decorative ranges.
           </p>
         </div>
-        <div data-anim="stagger" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-anim="stagger" className="grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4">
           {items.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

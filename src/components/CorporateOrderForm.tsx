@@ -1,7 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { categories, company, products } from "@/data/products";
+import { company } from "@/data/products";
+
+type CategoryOption = { slug: string; name: string; series: { slug: string; name: string }[] };
 
 const inquiryTypes = [
   { value: "product", label: "Product inquiry" },
@@ -35,14 +37,15 @@ const initial: FormState = {
   message: "",
 };
 
-export function CorporateOrderForm() {
+export function CorporateOrderForm({ categories }: { categories: CategoryOption[] }) {
   const [form, setForm] = useState<FormState>(initial);
   const [sent, setSent] = useState(false);
 
-  const filteredProducts = useMemo(() => {
-    if (!form.category) return products;
-    return products.filter((p) => p.categorySlug === form.category);
-  }, [form.category]);
+  const allSeries = useMemo(() => categories.flatMap((c) => c.series), [categories]);
+  const filteredSeries = useMemo(() => {
+    if (!form.category) return allSeries;
+    return categories.find((c) => c.slug === form.category)?.series ?? [];
+  }, [allSeries, categories, form.category]);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => {
@@ -59,7 +62,7 @@ export function CorporateOrderForm() {
     const categoryName =
       categories.find((c) => c.slug === form.category)?.name || form.category || "Not specified";
     const productName =
-      products.find((p) => p.slug === form.product)?.name || form.product || "Not specified";
+      allSeries.find((s) => s.slug === form.product)?.name || form.product || "Not specified";
 
     const body = [
       `Inquiry type: ${typeLabel}`,
@@ -69,7 +72,7 @@ export function CorporateOrderForm() {
       `Phone: ${form.phone}`,
       `City: ${form.city || "—"}`,
       `Category: ${categoryName}`,
-      `Product: ${productName}`,
+      `Series: ${productName}`,
       `Quantity / bulk size: ${form.quantity || "—"}`,
       "",
       "Message:",
@@ -234,17 +237,17 @@ export function CorporateOrderForm() {
         </label>
 
         <label className="grid gap-2 text-sm">
-          <span className="font-medium">Specific product (optional)</span>
+          <span className="font-medium">Series (optional)</span>
           <select
             name="product"
             value={form.product}
             onChange={(e) => update("product", e.target.value)}
             className={field}
           >
-            <option value="">Any / multiple products</option>
-            {filteredProducts.map((p) => (
-              <option key={p.slug} value={p.slug}>
-                {p.name}
+            <option value="">Any / multiple series</option>
+            {filteredSeries.map((s) => (
+              <option key={s.slug} value={s.slug}>
+                {s.name}
               </option>
             ))}
           </select>

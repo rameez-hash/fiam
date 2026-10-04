@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { getPopularProducts } from "@/data/products";
+import { getShowcaseProducts } from "@/data/catalog";
 import { ProductCard } from "./ProductCard";
 
 export function PopularProducts() {
-  const items = getPopularProducts().slice(0, 8);
+  const items = getShowcaseProducts(8);
 
   return (
     <section className="section-pad bg-white">
@@ -17,7 +17,7 @@ export function PopularProducts() {
           </p>
         </div>
 
-        <div data-anim="stagger" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-anim="stagger" className="grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4">
           {items.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

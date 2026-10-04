@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { company, type Product, type Category } from "@/data/products";
+import type { CatalogProduct } from "@/data/catalog";
+import { company } from "@/data/products";
 
 const siteName = "Fiam Pakistan";
 
@@ -126,25 +127,26 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   };
 }
 
-export function productJsonLd(product: Product, category?: Category) {
+export function productJsonLd(product: CatalogProduct, categoryName?: string) {
+  const rows = product.specs.length ? product.specs : product.params;
   return {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: product.name,
-    description: product.description,
-    image: [product.image],
-    sku: product.specs.code,
-    brand: { "@type": "Brand", name: company.name },
+    name: product.code,
+    description: [product.seriesTitle, ...rows.slice(0, 6).map((r) => `${r.label}: ${r.value}`)]
+      .filter(Boolean)
+      .join(". "),
+    image: product.images.map((src) => absoluteUrl(src)),
+    sku: product.code,
+    brand: { "@type": "Brand", name: "FIAM" },
     manufacturer: { "@type": "Organization", name: company.legalName },
-    category: category?.name,
+    category: categoryName,
     url: absoluteUrl(`/products/${product.slug}`),
-    additionalProperty: Object.entries(product.specs)
-      .filter(([, v]) => v)
-      .map(([name, value]) => ({
-        "@type": "PropertyValue",
-        name,
-        value,
-      })),
+    additionalProperty: rows.map((r) => ({
+      "@type": "PropertyValue",
+      name: r.label,
+      value: r.value,
+    })),
   };
 }
 

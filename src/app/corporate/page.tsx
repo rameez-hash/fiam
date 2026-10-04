@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CorporateOrderForm } from "@/components/CorporateOrderForm";
-import { categories, company } from "@/data/products";
+import { getChildren, topCategories } from "@/data/catalog";
+import { company } from "@/data/products";
 import { JsonLd, breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -106,7 +107,7 @@ export default function CorporatePage() {
           <span className="w-full mb-2 text-[12px] font-semibold tracking-[0.16em] uppercase text-ink-soft">
             Categories available for corporate supply
           </span>
-          {categories.map((cat) => (
+          {topCategories.map((cat) => (
             <Link
               key={cat.slug}
               href={`/categories/${cat.slug}`}
@@ -157,7 +158,13 @@ export default function CorporatePage() {
           </div>
         </div>
 
-        <CorporateOrderForm />
+        <CorporateOrderForm
+          categories={topCategories.map((cat) => ({
+            slug: cat.slug,
+            name: cat.name,
+            series: getChildren(cat).map((s) => ({ slug: s.slug, name: s.name })),
+          }))}
+        />
       </section>
     </>
   );
