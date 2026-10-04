@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { commercialPageKeywords, outdoorPageKeywords, decorativePageKeywords } from "@/data/seo-keywords";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Commercial Lighting Projects",
+  title: "LED Lighting Projects Pakistan | Commercial, Outdoor & Decorative",
   description:
-    "Explore Fiam Pakistan commercial lighting project capabilities across offices, hospitality, outdoor pathways, and decorative interiors.",
+    "Explore Fiam Pakistan LED lighting project capabilities for offices, hospitality, outdoor pathways, pendant lighting, and decorative interiors across Pakistan.",
   path: "/projects",
-  keywords: ["Fiam Pakistan projects", "commercial lighting projects"],
+  keywords: [
+    ...new Set([
+      ...commercialPageKeywords(),
+      ...outdoorPageKeywords(),
+      ...decorativePageKeywords(),
+      "LED lighting projects Pakistan",
+    ]),
+  ],
 });
 
 const projects = [

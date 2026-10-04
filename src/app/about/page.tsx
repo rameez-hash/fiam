@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { company } from "@/data/products";
+import { aboutPageKeywords } from "@/data/seo-keywords";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About Fiam Pakistan",
+  title: "About Fiam Pakistan | Best Lighting Store & LED Lights Company",
   description:
-    "Pak Burma Traders is the exclusive importer of FIAM Lighting in Pakistan: commercial, decorative, outdoor, and LED lighting since 2002. Contact info@fiam.com.pk.",
+    "Pak Burma Traders is the exclusive importer of FIAM Lighting in Pakistan and a leading lighting store for commercial, decorative, outdoor, pendant, and ceiling lights nationwide.",
   path: "/about",
-  keywords: [
-    "about Fiam Pakistan",
-    "Pak Burma Traders",
-    "FIAM Lighting Pakistan",
-    "fiam.com.pk",
-  ],
+  keywords: aboutPageKeywords(),
 });
 
 export default function AboutPage() {

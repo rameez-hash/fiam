@@ -41,9 +41,9 @@ const topMeta: Record<string, Omit<TopCategory, keyof CatalogNode> & { slug: str
     shortName: "Commercial",
     description:
       "Downlights, track, linear, panel, high bay and wall washer systems engineered for offices, retail, hospitality and public spaces.",
-    seoTitle: "Commercial LED Lights | Downlights, Track & Linear",
+    seoTitle: "Commercial LED Lights Pakistan | Downlights, Track, Panel & Linear",
     seoDescription:
-      "Browse the full FIAM commercial LED range in Pakistan: SMD and COB downlights, track and magnetic track, linear, panel, batten, high bay and wall washer fixtures.",
+      "Buy commercial LED lights in Pakistan from Fiam: SMD and COB downlights, track lights, linear lights, LED panel lights, high bay and wall washers for offices, retail, and projects nationwide.",
     highlight: "Downlight · Track · Linear · Panel",
   },
   "8": {
@@ -52,9 +52,9 @@ const topMeta: Record<string, Omit<TopCategory, keyof CatalogNode> & { slug: str
     shortName: "LED Modules",
     description:
       "Recessed and surface fixtures for GU10, MR16, AR111 and PAR modules, with adjustable aiming and die-cast aluminium housings.",
-    seoTitle: "LED Module Fixtures GU10 MR16 AR111",
+    seoTitle: "LED Module Fixtures Pakistan | GU10, MR16, AR111 & PAR",
     seoDescription:
-      "FIAM fixtures for LED modules in Pakistan: GU10, MR16, AR111 and PAR38 recessed and surface housings for flexible accent and general lighting.",
+      "FIAM LED module fixtures in Pakistan for GU10, MR16, AR111 and PAR: recessed and surface housings for accent and general lighting across Karachi, Lahore, Islamabad, and more.",
     highlight: "GU10 · MR16 · AR111 · PAR",
   },
   "10": {
@@ -63,9 +63,9 @@ const topMeta: Record<string, Omit<TopCategory, keyof CatalogNode> & { slug: str
     shortName: "Outdoor",
     description:
       "IP-rated step lights, wall lights, floodlights, bollards and landscape luminaires for façades, gardens and pathways.",
-    seoTitle: "Outdoor LED Lights IP65 | Step, Wall & Flood",
+    seoTitle: "Outdoor LED Lights Pakistan | Flood, Step, Wall & Garden Lights",
     seoDescription:
-      "FIAM outdoor lighting in Pakistan: IP65 step lights, wall lights, floodlights, inground and landscape fixtures for architectural exteriors.",
+      "Outdoor LED lights in Pakistan from Fiam: IP-rated flood lights, step lights, wall lights, bollards and garden lights for façades, pathways, and outdoor projects nationwide.",
     highlight: "IP-rated exterior luminaires",
   },
   "1198": {
@@ -74,9 +74,9 @@ const topMeta: Record<string, Omit<TopCategory, keyof CatalogNode> & { slug: str
     shortName: "Decorative",
     description:
       "Pendants, chandeliers, wall, table and floor lamps that shape atmosphere in homes, hospitality and boutique interiors.",
-    seoTitle: "Decorative Lighting | Pendants, Floor & Table Lamps",
+    seoTitle: "Pendant Lights & Decorative Lighting Pakistan | Chandeliers & Lamps",
     seoDescription:
-      "Shop FIAM decorative lighting in Pakistan: pendant lights, chandeliers, ceiling, wall, table and floor lamps for residential and hospitality interiors.",
+      "Shop pendant lights, chandeliers, ceiling lights, wall lamps, table lamps and floor lamps in Pakistan. Decorative lighting by Fiam for homes, hospitality, and interiors nationwide.",
     highlight: "Atmosphere-first interiors",
   },
 };

@@ -66,7 +66,7 @@ export function SolarLights() {
           <div className="order-1 lg:order-2">
             <div data-anim="image" className="relative aspect-[3/4] overflow-hidden bg-bg-muted">
               <Image
-                src="/solar-lights.jpg"
+                src="/solar-lights-v2.jpg"
                 alt="Solar street lights along an outdoor walkway at dusk"
                 fill
                 quality={92}

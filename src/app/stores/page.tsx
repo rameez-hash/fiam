@@ -2,19 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { StoreLocator } from "@/components/StoreLocator";
 import { storeCities, storeContact } from "@/data/stores";
+import { storesPageKeywords } from "@/data/seo-keywords";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Store Locations",
+  title: "Store Locations | Lighting Stores & LED Lights Shops Across Pakistan",
   description:
-    "Find Fiam Lighting Pakistan stores and dealers in Karachi, Lahore, Islamabad, Multan, Faisalabad, Peshawar, Rawalpindi, and Hyderabad.",
+    "Find Fiam lighting stores and LED lights shops in Karachi, Lahore, Islamabad, Rawalpindi, Multan, Faisalabad, Peshawar, Hyderabad, Quetta, and more cities across Pakistan.",
   path: "/stores",
-  keywords: [
-    "Fiam store locator",
-    "Fiam lights Karachi",
-    "Fiam lights Lahore",
-    "LED store Pakistan",
-  ],
+  keywords: storesPageKeywords(),
 });
 
 export default function StoresPage() {

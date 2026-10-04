@@ -33,11 +33,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .map((s) => `${s.label} ${s.value}`)
     .join(", ");
   return buildMetadata({
-    title: `${product.code} ${product.seriesTitle || family?.name || ""}`.trim(),
-    description: `FIAM ${product.code}${product.seriesTitle ? ` - ${product.seriesTitle}` : ""}. ${specText}. Available in Pakistan from Fiam Pakistan.`.slice(0, 300),
+    title: `${product.code} ${product.seriesTitle || family?.name || ""} | Buy in Pakistan`.trim(),
+    description: `Buy ${product.code}${product.seriesTitle ? ` ${product.seriesTitle}` : ""} LED lighting in Pakistan from Fiam. ${specText}. Specs, models, and nationwide store support.`.slice(0, 300),
     path: `/products/${product.slug}`,
     image: productImage(product) || undefined,
-    keywords: [product.code, family?.name ?? "", product.seriesTitle].filter(Boolean),
+    keywords: [
+      product.code,
+      family?.name ?? "",
+      product.seriesTitle,
+      "buy LED lights online Pakistan",
+      "LED lights price in Pakistan",
+      "lighting fixtures Pakistan",
+      "Fiam Pakistan",
+    ].filter(Boolean),
   });
 }
 

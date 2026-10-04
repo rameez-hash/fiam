@@ -3,20 +3,15 @@ import Link from "next/link";
 import { CorporateOrderForm } from "@/components/CorporateOrderForm";
 import { getChildren, topCategories } from "@/data/catalog";
 import { company } from "@/data/products";
+import { corporatePageKeywords } from "@/data/seo-keywords";
 import { JsonLd, breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Corporate & Bulk LED Orders",
+  title: "Corporate & Bulk LED Orders Pakistan | Commercial Lighting Quotes",
   description:
-    "Corporate lighting desk at Fiam Pakistan. Request product specs or place bulk/wholesale LED orders for projects, dealers, and companies. Email info@fiam.com.pk.",
+    "Request bulk LED lights, commercial lighting, office lights, and wholesale quotations from Fiam Pakistan for projects, dealers, and companies nationwide.",
   path: "/corporate",
-  keywords: [
-    "Fiam Pakistan corporate",
-    "bulk LED order Pakistan",
-    "wholesale lighting",
-    "corporate lighting quotation",
-    "info@fiam.com.pk",
-  ],
+  keywords: corporatePageKeywords(),
 });
 
 const benefits = [

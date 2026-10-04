@@ -4,9 +4,9 @@ export const company = {
   name: "Fiam Pakistan",
   legalName: "Pak Burma Traders",
   brandName: "Fiam Lighting Pakistan",
-  tagline: "Give light a special spot in every space",
+  tagline: "Top LED lights store Pakistan for commercial, outdoor and decorative lighting",
   description:
-    "Fiam Lighting Pakistan supplies commercial LED fixtures, outdoor luminaires, decorative lighting, and LED modules through Pak Burma Traders, the exclusive FIAM importer for Pakistan.",
+    "Fiam Pakistan is a leading lighting store and LED lights company in Pakistan. Exclusive FIAM importer for commercial lighting, pendant lights, chandeliers, ceiling lights, outdoor LED lights, GU10/MR16 modules, and decorative lighting across Karachi, Lahore, Islamabad, and nationwide.",
   about:
     "Established in 1980 by Abdul Sattar Khadbai, Pak Burma Traders is the exclusive importer of FIAM Lighting in Pakistan. The company began with lighting fixture parts and, in 1998, became an early wholesaler of imported lighting products for the local market. In 2002 it secured exclusive distribution of FIAM Lighting in Pakistan, and has since built a nationwide retailer network for quality fixtures and luminaires.",
   companyGroup:

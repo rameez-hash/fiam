@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { company } from "@/data/products";
+import { contactPageKeywords } from "@/data/seo-keywords";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact Fiam Pakistan",
+  title: "Contact Fiam Pakistan | Buy LED Lights Online & Get a Quote",
   description:
-    "Contact Fiam Lighting Pakistan for product specs, samples, and project quotes. Call +92 321 8208116 or email info@fiam.com.pk.",
+    "Contact Fiam Pakistan to buy LED lights online, request ceiling, pendant, outdoor, or commercial lighting quotes anywhere in Pakistan. Call +92 321 8208116 or email info@fiam.com.pk.",
   path: "/contact",
-  keywords: [
-    "contact Fiam Pakistan",
-    "LED lighting quote",
-    "info@fiam.com.pk",
-    "+92 321 8208116",
-  ],
+  keywords: contactPageKeywords(),
 });
 
 export default function ContactPage() {

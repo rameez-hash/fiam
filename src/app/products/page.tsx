@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { NodeCard } from "@/components/NodeCard";
 import { catalogProducts, getChildren, topCategories } from "@/data/catalog";
+import { productsPageKeywords } from "@/data/seo-keywords";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Products - FIAM LED Lighting Catalog",
+  title: "Buy LED Lights Online Pakistan | Full FIAM Lighting Catalog",
   description:
-    "The complete FIAM lighting catalog in Pakistan: commercial LED downlights, track and linear lights, LED module fixtures, outdoor luminaires and decorative lighting.",
+    "Buy LED lights online in Pakistan from Fiam: commercial lighting, ceiling lights, pendant lights, chandeliers, outdoor lights, GU10/MR16 modules, and decorative lighting with nationwide store support.",
   path: "/products",
-  keywords: ["FIAM products", "LED lighting catalog Pakistan", "downlights", "track lights", "decorative lighting"],
+  keywords: productsPageKeywords(),
 });
 
 export default function ProductsPage() {

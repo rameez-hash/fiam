@@ -1,29 +1,40 @@
 # Fiam Pakistan
 
-> Fiam Pakistan supplies commercial LED fixtures, LED modules (GU10/MR16/PAR/AR111), outdoor step lights, and decorative lighting panels for projects across Pakistan.
+> Best lighting store and LED lights company in Pakistan. Exclusive FIAM importer (Pak Burma Traders) for commercial lighting, decorative lights, outdoor LED lights, pendant lights, chandeliers, ceiling lights, and LED modules nationwide.
 
-## Site
-- Home: /
-- Products: /products
-- Categories: /categories/{slug}
-- Product detail: /products/{slug}
-- Corporate (bulk / product orders): /corporate
-- Store locations: /stores
-- About: /about
-- Projects: /projects
-- Contact: /contact
-- Sitemap: /sitemap.xml
-- Domain: https://fiam.com.pk
-
-## Categories
-- commercial-led-light — Commercial LED Light (linear, wall washer)
-- fixtures-led-module — Fixtures LED Module / GU10 / MR16
-- outdoor-light — Outdoor Light (IP65 step lights)
-- decorative-lighting — Decorative Lighting (panels & accents)
-
-## Contact
+- Site: https://fiam.com.pk
 - Email: info@fiam.com.pk
-- Website: https://fiam.com.pk
+- Phone: +92 321 8208116
+- Hours: Mon-Sat 10:00 AM - 9:00 PM
 
-## Product imagery
-Product models and imagery referenced from http://www.fiam.cc/
+## High-intent topics we cover
+
+- best lighting store in Pakistan
+- LED lights Pakistan / buy LED lights online Pakistan
+- pendant lights, chandeliers, ceiling lights, wall lights
+- commercial lighting, office lights, track lights, downlights
+- outdoor lights, flood lights, solar street lights, garden lights
+- lighting store Karachi, Lahore, Islamabad, Rawalpindi, Peshawar, Multan, Faisalabad, Hyderabad, Quetta
+
+## Product ranges
+
+1. Commercial LED Light: downlights, track, linear, panel, high bay, wall washers
+2. Fixtures LED Module: GU10, MR16, AR111, PAR
+3. Outdoor Light: flood, step, wall, bollard, garden, solar street lights
+4. Decorative Lighting: pendant lights, chandeliers, wall lamps, table lamps, floor lamps
+
+## Key URLs
+
+- https://fiam.com.pk/
+- https://fiam.com.pk/products
+- https://fiam.com.pk/stores
+- https://fiam.com.pk/corporate
+- https://fiam.com.pk/contact
+- https://fiam.com.pk/categories/commercial-led-light
+- https://fiam.com.pk/categories/decorative-lighting
+- https://fiam.com.pk/categories/outdoor-light
+- https://fiam.com.pk/categories/fixtures-led-module
+
+## Brand
+
+Fiam Pakistan / Fiam Lighting Pakistan. Legal entity: Pak Burma Traders, exclusive FIAM importer for Pakistan.

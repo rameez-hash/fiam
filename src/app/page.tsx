@@ -7,50 +7,48 @@ import { PopularProducts } from "@/components/PopularProducts";
 import { SolarLights } from "@/components/SolarLights";
 import { StoresPreview } from "@/components/StoresPreview";
 import { Testimonials } from "@/components/Testimonials";
-import { company } from "@/data/products";
-import { JsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
+import { homeSeo, homePageKeywords } from "@/data/seo-keywords";
+import { JsonLd, buildMetadata, categoryListJsonLd, faqJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Fiam Pakistan | Commercial, Outdoor & Decorative LED Lighting",
-  description: company.description,
+  title: homeSeo.title,
+  description: homeSeo.description,
   path: "/",
-  keywords: [
-    "Fiam Pakistan official",
-    "fiam.com.pk",
-    "commercial LED light",
-    "outdoor step light",
-    "decorative LED panel",
-    "LED module GU10 MR16",
-  ],
+  keywords: homePageKeywords(),
 });
 
 const faqs = [
   {
-    question: "What lighting categories does Fiam Pakistan supply?",
+    question: "Is Fiam Pakistan among the best lighting stores in Pakistan?",
     answer:
-      "We supply Commercial LED Light, Fixtures LED Module, Outdoor Light, and Decorative Lighting for homes, offices, retail, and project sites across Pakistan.",
+      "Yes. Fiam Pakistan (Pak Burma Traders) is the exclusive FIAM importer and a leading lighting store and LED lights shop with retail partners across Karachi, Lahore, Islamabad, Multan, Faisalabad, Peshawar, Rawalpindi, and Hyderabad.",
   },
   {
-    question: "Where can I buy Fiam products near me?",
+    question: "What lighting categories can I buy from Fiam Pakistan?",
     answer:
-      "Visit our Store Locations page for dealers in Karachi, Lahore, Islamabad, Multan, Faisalabad, Peshawar, Rawalpindi, and Hyderabad, or contact us for the nearest partner.",
+      "You can buy commercial lighting, LED downlights, track lights, panel lights, pendant lights, chandeliers, wall lights, outdoor LED lights, solar street lights, GU10/MR16 LED modules, and decorative lighting for homes and projects across Pakistan.",
   },
   {
-    question: "Do you take corporate or bulk orders?",
+    question: "Can I buy LED lights online in Pakistan from Fiam?",
     answer:
-      "Yes. Use the Corporate page to request product details or bulk quotations for projects, dealers, and companies.",
+      "Browse the full catalog online at fiam.com.pk, then contact us or visit a partner store for pricing, availability, and delivery support anywhere in Pakistan.",
   },
   {
-    question: "How can I get specifications or a quotation?",
+    question: "Where can I find a lighting store or LED lights shop near me?",
     answer:
-      "Email info@fiam.com.pk, call +92 321 8208116, or send a message through the contact form. We usually respond with product guidance within one business day.",
+      "Open our Store Locations page to find lighting stores and Fiam dealers in major cities across Pakistan, or call +92 321 8208116 for the nearest partner.",
+  },
+  {
+    question: "Do you supply commercial and outdoor lighting for projects?",
+    answer:
+      "Yes. Use the Corporate page for bulk and project quotations on commercial LED lighting, office lights, outdoor lights, and decorative fixtures nationwide.",
   },
 ];
 
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={faqJsonLd(faqs)} />
+      <JsonLd data={[faqJsonLd(faqs), categoryListJsonLd()]} />
       <Hero />
       <CategoryGrid />
       <AtmosphereBand />

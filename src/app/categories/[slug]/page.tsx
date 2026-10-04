@@ -16,9 +16,30 @@ import {
   nodeImage,
   topCategories,
 } from "@/data/catalog";
+import {
+  commercialPageKeywords,
+  decorativePageKeywords,
+  modulesPageKeywords,
+  outdoorPageKeywords,
+} from "@/data/seo-keywords";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
+
+function keywordsForRoot(rootId?: string): string[] {
+  switch (rootId) {
+    case "7":
+      return commercialPageKeywords();
+    case "8":
+      return modulesPageKeywords();
+    case "10":
+      return outdoorPageKeywords();
+    case "1198":
+      return decorativePageKeywords();
+    default:
+      return ["LED lights Pakistan", "lighting fixtures Pakistan", "Fiam Pakistan"];
+  }
+}
 
 export function generateStaticParams() {
   return catalogNodes.map((n) => ({ slug: n.slug }));
@@ -31,14 +52,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const root = getRootCategory(node);
   const top = node.depth === 0 ? root : undefined;
   const trail = getAncestors(node).map((n) => n.name);
+  const rootKeywords = keywordsForRoot(root?.id);
   return buildMetadata({
-    title: top?.seoTitle ?? `${node.name} - ${root?.name ?? "FIAM"}`,
+    title: top?.seoTitle ?? `${node.name} Pakistan | ${root?.name ?? "FIAM"} Lighting`,
     description:
       top?.seoDescription ??
-      `${node.name} by FIAM in Pakistan: ${countProducts(node)} models with full technical data, images and sizes. Part of the ${[...trail].reverse().join(" / ")} range.`,
+      `Shop ${node.name} in Pakistan from Fiam: ${countProducts(node)} models with specs and images. Part of ${[...trail].reverse().join(" / ") || root?.name || "FIAM"} lighting nationwide.`,
     path: `/categories/${node.slug}`,
     image: nodeImage(node) || undefined,
-    keywords: [node.name, ...trail, "FIAM Pakistan"],
+    keywords: [node.name, ...trail, ...rootKeywords],
   });
 }
 

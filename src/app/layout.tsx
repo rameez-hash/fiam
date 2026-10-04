@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Motion } from "@/components/Motion";
 import { countProducts, getChildren, nodeImage, topCategories } from "@/data/catalog";
 import { company } from "@/data/products";
+import { homeSeo, homePageKeywords } from "@/data/seo-keywords";
 import { JsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
 
@@ -17,20 +18,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(company.siteUrl),
   title: {
-    default: "Fiam Pakistan | Commercial, Outdoor & Decorative LED Lighting",
+    default: homeSeo.title,
     template: "%s | Fiam Pakistan",
   },
-  description: company.description,
-  keywords: [
-    "Fiam Pakistan",
-    "FIAM Light",
-    "LED lighting Pakistan",
-    "commercial LED",
-    "outdoor light",
-    "decorative lighting",
-    "GU10 MR16",
-    "architectural lighting",
-  ],
+  description: homeSeo.description,
+  keywords: homePageKeywords(),
   authors: [{ name: company.legalName }],
   creator: company.name,
   publisher: company.legalName,
@@ -38,13 +30,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_PK",
     siteName: "Fiam Pakistan",
-    title: "Fiam Pakistan | Commercial, Outdoor & Decorative LED Lighting",
-    description: company.description,
+    title: homeSeo.title,
+    description: homeSeo.description,
+    url: company.siteUrl,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fiam Pakistan",
-    description: company.description,
+    title: homeSeo.title,
+    description: homeSeo.description,
   },
   robots: {
     index: true,
