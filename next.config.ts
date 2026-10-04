@@ -199,16 +199,6 @@ const legacyRedirects: Redirect[] = [
     permanent: true,
   },
   {
-    source: "/fiam/Basic lighting Technology.html",
-    destination: "/about",
-    permanent: true,
-  },
-  {
-    source: "/fiam/Basic+lighting+Technology.html",
-    destination: "/about",
-    permanent: true,
-  },
-  {
     source: "/fiam/index.html",
     destination: "/",
     permanent: true,
