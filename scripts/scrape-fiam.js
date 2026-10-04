@@ -238,7 +238,8 @@ async function crawlList(id, name, image, parentId, ancestry, state) {
     } catch (e) {
       console.warn("   ! product failed", card.url, e.message);
     }
-    const images = [...new Set([card.cover, ...detail.gallery].filter(Boolean))];
+    // Prefer show-page lightbox photos; list cover is often a near-duplicate.
+    const images = [...new Set((detail.gallery.length ? detail.gallery : [card.cover]).filter(Boolean))];
     state.products.set(card.id, {
       id: card.id,
       code: detail.code || card.title,

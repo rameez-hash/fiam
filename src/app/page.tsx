@@ -54,11 +54,11 @@ export default function HomePage() {
       <JsonLd data={faqJsonLd(faqs)} />
       <Hero />
       <CategoryGrid />
+      <AtmosphereBand />
       <BenefitsSection />
       <SolarLights />
       <PopularProducts />
       <Testimonials />
-      <AtmosphereBand />
       <FeaturedSale />
       <FaqSection items={faqs} />
     </>

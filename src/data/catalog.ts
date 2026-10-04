@@ -104,9 +104,21 @@ const nodeById = new Map(nodes.map((n) => [n.id, n]));
 const nodeBySlug = new Map(nodes.map((n) => [n.slug, n]));
 
 export const catalogProducts: CatalogProduct[] = data.products.map((p) => {
-  if (p.images.length) return p;
-  const fallback = rawById.get(p.nodeId)?.image;
-  return fallback ? { ...p, cover: fallback, images: [fallback] } : p;
+  // List-page cover was prepended during scrape and usually duplicates the first
+  // show-page photo, so drop it from the gallery when detail images exist.
+  let images =
+    p.cover && p.images.length > 1 && p.images[0] === p.cover
+      ? p.images.slice(1)
+      : [...p.images];
+  if (!images.length) {
+    const fallback = p.cover || rawById.get(p.nodeId)?.image || "";
+    if (fallback) images = [fallback];
+  }
+  return {
+    ...p,
+    cover: p.cover || images[0] || "",
+    images: [...new Set(images)],
+  };
 });
 const productById = new Map(catalogProducts.map((p) => [p.id, p]));
 const productBySlug = new Map(catalogProducts.map((p) => [p.slug, p]));
