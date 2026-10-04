@@ -48,9 +48,6 @@ export default function ContactPage() {
               <a href={`mailto:${company.email}`} className="mt-1 block text-lg font-medium hover:text-accent">
                 {company.email}
               </a>
-              <a href={`mailto:${company.altEmail}`} className="mt-1 block hover:text-accent">
-                {company.altEmail}
-              </a>
             </li>
             <li>
               <p className="text-ink-soft">Phone</p>
@@ -66,10 +63,9 @@ export default function ContactPage() {
               <p className="mt-1 font-medium">{company.hours}</p>
             </li>
             <li>
-              <p className="text-ink-soft">Address</p>
-              <p className="mt-1 leading-relaxed">{company.address}</p>
-              <Link href="/stores" className="mt-2 inline-block text-sm font-medium text-accent hover:underline">
-                View all store locations
+              <p className="text-ink-soft">Stores</p>
+              <Link href="/stores" className="mt-1 inline-block text-lg font-medium hover:text-accent">
+                View store locations
               </Link>
             </li>
           </ul>

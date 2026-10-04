@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { company } from "@/data/products";
 import { Logo } from "./Logo";
@@ -26,6 +27,7 @@ const nav = [
 ];
 
 export function Header({ menu }: { menu: MenuCategory[] }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
@@ -39,6 +41,17 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
   useEffect(() => {
     shopOpenRef.current = shopOpen;
   }, [shopOpen]);
+
+  // New routes should open from the top with a visible header.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const header = headerRef.current;
+    if (header) gsap.set(header, { yPercent: 0 });
+    setOpen(false);
+    setShopOpen(false);
+    setMobileCat(null);
+    setScrolled(false);
+  }, [pathname]);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -63,7 +76,7 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";

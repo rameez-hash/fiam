@@ -87,10 +87,10 @@ export function organizationJsonLd() {
     telephone: company.phone,
     address: {
       "@type": "PostalAddress",
-      streetAddress: company.addressShort,
       addressLocality: "Karachi",
       addressCountry: "PK",
     },
+    hasMap: absoluteUrl("/stores"),
     contactPoint: {
       "@type": "ContactPoint",
       telephone: company.phone,

@@ -8,7 +8,7 @@ import { JsonLd, breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Corporate & Bulk LED Orders",
   description:
-    "Corporate lighting desk at Fiam Pakistan — request product specs or place bulk/wholesale LED orders for projects, dealers, and companies. Email info@fiam.com.pk.",
+    "Corporate lighting desk at Fiam Pakistan. Request product specs or place bulk/wholesale LED orders for projects, dealers, and companies. Email info@fiam.com.pk.",
   path: "/corporate",
   keywords: [
     "Fiam Pakistan corporate",
@@ -30,7 +30,7 @@ const benefits = [
   },
   {
     title: "Project support",
-    text: "Share site details and timelines — we respond with suitable models and quantities.",
+    text: "Share site details and timelines. We respond with suitable models and quantities.",
   },
 ];
 
@@ -73,7 +73,7 @@ export default function CorporatePage() {
             Product &amp; bulk orders for companies
           </h1>
           <p data-anim="fade" data-delay="0.15" className="mt-5 max-w-2xl text-white/70 leading-relaxed">
-            Need fixtures for a project or a wholesale quantity? Use the corporate form below — Fiam Pakistan
+            Need fixtures for a project or a wholesale quantity? Use the corporate form below. Fiam Pakistan
             will follow up on product specs, availability, and bulk quotations.
           </p>
           <div data-anim="fade" data-delay="0.25" className="mt-8 flex flex-wrap gap-4">

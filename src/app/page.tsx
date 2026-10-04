@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { AtmosphereBand } from "@/components/AtmosphereBand";
 import { CategoryGrid } from "@/components/CategoryGrid";
-import { LayeredLighting } from "@/components/LayeredLighting";
 import { FaqSection } from "@/components/FaqSection";
-import { FeaturedSale } from "@/components/FeaturedSale";
 import { Hero } from "@/components/Hero";
 import { PopularProducts } from "@/components/PopularProducts";
 import { SolarLights } from "@/components/SolarLights";
+import { StoresPreview } from "@/components/StoresPreview";
 import { Testimonials } from "@/components/Testimonials";
 import { company } from "@/data/products";
 import { JsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
@@ -29,12 +28,12 @@ const faqs = [
   {
     question: "What lighting categories does Fiam Pakistan supply?",
     answer:
-      "We supply Commercial LED Light, Fixtures LED Module/GU10/MR16, Outdoor Light, and Decorative Lighting for homes, offices, retail, and project sites across Pakistan.",
+      "We supply Commercial LED Light, Fixtures LED Module, Outdoor Light, and Decorative Lighting for homes, offices, retail, and project sites across Pakistan.",
   },
   {
     question: "Where can I buy Fiam products near me?",
     answer:
-      "Visit our Store Locations page for dealers in Karachi, Lahore, Islamabad, Multan, Faisalabad, Peshawar, Rawalpindi, and Hyderabad — or contact us for the nearest partner.",
+      "Visit our Store Locations page for dealers in Karachi, Lahore, Islamabad, Multan, Faisalabad, Peshawar, Rawalpindi, and Hyderabad, or contact us for the nearest partner.",
   },
   {
     question: "Do you take corporate or bulk orders?",
@@ -55,11 +54,10 @@ export default function HomePage() {
       <Hero />
       <CategoryGrid />
       <AtmosphereBand />
-      <LayeredLighting />
-      <SolarLights />
       <PopularProducts />
+      <StoresPreview />
+      <SolarLights />
       <Testimonials />
-      <FeaturedSale />
       <FaqSection items={faqs} />
     </>
   );

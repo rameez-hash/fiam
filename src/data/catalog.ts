@@ -41,18 +41,18 @@ const topMeta: Record<string, Omit<TopCategory, keyof CatalogNode> & { slug: str
     shortName: "Commercial",
     description:
       "Downlights, track, linear, panel, high bay and wall washer systems engineered for offices, retail, hospitality and public spaces.",
-    seoTitle: "Commercial LED Lights | Downlights, Track & Linear | Fiam Pakistan",
+    seoTitle: "Commercial LED Lights | Downlights, Track & Linear",
     seoDescription:
       "Browse the full FIAM commercial LED range in Pakistan: SMD and COB downlights, track and magnetic track, linear, panel, batten, high bay and wall washer fixtures.",
     highlight: "Downlight · Track · Linear · Panel",
   },
   "8": {
     slug: "fixtures-led-module",
-    name: "Fixtures LED Module / GU10 / MR16",
+    name: "Fixtures LED Module",
     shortName: "LED Modules",
     description:
       "Recessed and surface fixtures for GU10, MR16, AR111 and PAR modules, with adjustable aiming and die-cast aluminium housings.",
-    seoTitle: "LED Module Fixtures GU10 MR16 AR111 | Fiam Pakistan",
+    seoTitle: "LED Module Fixtures GU10 MR16 AR111",
     seoDescription:
       "FIAM fixtures for LED modules in Pakistan: GU10, MR16, AR111 and PAR38 recessed and surface housings for flexible accent and general lighting.",
     highlight: "GU10 · MR16 · AR111 · PAR",
@@ -63,7 +63,7 @@ const topMeta: Record<string, Omit<TopCategory, keyof CatalogNode> & { slug: str
     shortName: "Outdoor",
     description:
       "IP-rated step lights, wall lights, floodlights, bollards and landscape luminaires for façades, gardens and pathways.",
-    seoTitle: "Outdoor LED Lights IP65 | Step, Wall & Flood | Fiam Pakistan",
+    seoTitle: "Outdoor LED Lights IP65 | Step, Wall & Flood",
     seoDescription:
       "FIAM outdoor lighting in Pakistan: IP65 step lights, wall lights, floodlights, inground and landscape fixtures for architectural exteriors.",
     highlight: "IP-rated exterior luminaires",
@@ -74,7 +74,7 @@ const topMeta: Record<string, Omit<TopCategory, keyof CatalogNode> & { slug: str
     shortName: "Decorative",
     description:
       "Pendants, chandeliers, wall, table and floor lamps that shape atmosphere in homes, hospitality and boutique interiors.",
-    seoTitle: "Decorative Lighting | Pendants, Floor & Table Lamps | Fiam Pakistan",
+    seoTitle: "Decorative Lighting | Pendants, Floor & Table Lamps",
     seoDescription:
       "Shop FIAM decorative lighting in Pakistan: pendant lights, chandeliers, ceiling, wall, table and floor lamps for residential and hospitality interiors.",
     highlight: "Atmosphere-first interiors",
@@ -177,7 +177,7 @@ export function getProductSiblings(p: CatalogProduct) {
   return node ? getNodeProducts(node) : [];
 }
 
-/** First product of each family, spread across categories — for home page rails */
+/** First product of each family, spread across categories, for home page rails */
 export function getShowcaseProducts(limit = 8, offset = 0) {
   const perCategory = topCategories.map((cat) => {
     const picks: CatalogProduct[] = [];

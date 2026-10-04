@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const top = node.depth === 0 ? root : undefined;
   const trail = getAncestors(node).map((n) => n.name);
   return buildMetadata({
-    title: top?.seoTitle ?? `${node.name} — ${root?.name ?? "FIAM"}`,
+    title: top?.seoTitle ?? `${node.name} - ${root?.name ?? "FIAM"}`,
     description:
       top?.seoDescription ??
       `${node.name} by FIAM in Pakistan: ${countProducts(node)} models with full technical data, images and sizes. Part of the ${[...trail].reverse().join(" / ")} range.`,
@@ -71,21 +71,29 @@ export default async function CategoryPage({ params }: Props) {
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
 
       {isTop && root ? (
-        <section className="relative isolate min-h-[48vh] overflow-hidden bg-bg-deep text-white">
-          {node.image && (
-            <div data-parallax="16" className="absolute inset-x-0 -inset-y-[10%]">
-              <Image src={node.image} alt="" fill priority sizes="100vw" className="object-cover opacity-55" />
+        <section className="relative isolate min-h-[52vh] overflow-hidden bg-bg-deep text-white sm:min-h-[58vh]">
+          {node.image ? (
+            <div data-parallax="12" className="absolute inset-x-0 -inset-y-[8%]">
+              <Image
+                src={node.image}
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover object-center"
+              />
             </div>
-          )}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/10" />
-          <div className="container-page relative flex min-h-[48vh] flex-col justify-end pb-16 pt-28">
-            <p data-anim="fade" className="text-[12px] font-semibold uppercase tracking-[0.22em] text-white/60">
+          ) : null}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-transparent to-transparent" />
+          <div className="container-page relative flex min-h-[52vh] flex-col justify-end pb-14 pt-28 sm:min-h-[58vh] sm:pb-16">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-white/70">
               {root.highlight}
             </p>
-            <h1 data-anim="lines" className="mt-3 max-w-3xl text-5xl font-semibold tracking-tight sm:text-6xl">
+            <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
               {node.name}
             </h1>
-            <p data-anim="fade" data-delay="0.15" className="mt-5 max-w-2xl leading-relaxed text-white/75">
+            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85 sm:text-base">
               {root.description}
             </p>
           </div>

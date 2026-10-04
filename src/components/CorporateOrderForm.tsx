@@ -70,17 +70,17 @@ export function CorporateOrderForm({ categories }: { categories: CategoryOption[
       `Contact: ${form.contactName}`,
       `Email: ${form.email}`,
       `Phone: ${form.phone}`,
-      `City: ${form.city || "—"}`,
+      `City: ${form.city || "-"}`,
       `Category: ${categoryName}`,
       `Series: ${productName}`,
-      `Quantity / bulk size: ${form.quantity || "—"}`,
+      `Quantity / bulk size: ${form.quantity || "-"}`,
       "",
       "Message:",
       form.message,
     ].join("\n");
 
     const subject = encodeURIComponent(
-      `[Corporate] ${typeLabel} — ${form.companyName || form.contactName}`
+      `[Corporate] ${typeLabel} - ${form.companyName || form.contactName}`
     );
     const mailto = `mailto:${company.email}?subject=${subject}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
@@ -92,7 +92,7 @@ export function CorporateOrderForm({ categories }: { categories: CategoryOption[
       <div className="border border-line bg-white p-8 lg:p-10">
         <p className="text-[12px] font-semibold tracking-[0.18em] uppercase text-accent">Received</p>
         <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight">
-          Thank you — open your email app to send
+          Thank you. Open your email app to send
         </h3>
         <p className="mt-4 text-ink-soft leading-relaxed">
           Your corporate inquiry is ready to send to{" "}

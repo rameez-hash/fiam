@@ -6,7 +6,7 @@ import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "About Fiam Pakistan",
   description:
-    "Pak Burma Traders is the exclusive importer of FIAM Lighting in Pakistan — commercial, decorative, outdoor, and LED lighting since 2002. Contact info@fiam.com.pk.",
+    "Pak Burma Traders is the exclusive importer of FIAM Lighting in Pakistan: commercial, decorative, outdoor, and LED lighting since 2002. Contact info@fiam.com.pk.",
   path: "/about",
   keywords: [
     "about Fiam Pakistan",
@@ -89,8 +89,12 @@ export default function AboutPage() {
               <dd className="mt-1 font-medium">{company.brandName}</dd>
             </div>
             <div>
-              <dt className="text-ink-soft">Address</dt>
-              <dd className="mt-1 font-medium">{company.address}</dd>
+              <dt className="text-ink-soft">Stores</dt>
+              <dd className="mt-1 font-medium">
+                <Link href="/stores" className="hover:text-accent">
+                  View store locations
+                </Link>
+              </dd>
             </div>
             <div>
               <dt className="text-ink-soft">Hours</dt>
@@ -109,11 +113,6 @@ export default function AboutPage() {
               <dd className="mt-1 font-medium">
                 <a href={`mailto:${company.email}`} className="hover:text-accent">
                   {company.email}
-                </a>
-              </dd>
-              <dd className="mt-1 font-medium">
-                <a href={`mailto:${company.altEmail}`} className="hover:text-accent">
-                  {company.altEmail}
                 </a>
               </dd>
             </div>

@@ -5,7 +5,7 @@ import { catalogProducts, getChildren, topCategories } from "@/data/catalog";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Products — FIAM LED Lighting Catalog",
+  title: "Products - FIAM LED Lighting Catalog",
   description:
     "The complete FIAM lighting catalog in Pakistan: commercial LED downlights, track and linear lights, LED module fixtures, outdoor luminaires and decorative lighting.",
   path: "/products",

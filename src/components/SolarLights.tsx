@@ -34,8 +34,8 @@ export function SolarLights() {
               Solar street lighting for outdoor projects
             </h2>
             <p data-anim="fade" className="mt-4 max-w-md text-[15px] leading-relaxed text-ink-soft">
-              Reliable solar fixtures for pathways, compounds, and commercial outdoor areas —
-              practical to install and economical to run.
+              Reliable solar fixtures for pathways, compounds, and commercial outdoor areas.
+              Practical to install and economical to run.
             </p>
 
             <ul data-anim="stagger" className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -64,13 +64,13 @@ export function SolarLights() {
           </div>
 
           <div className="order-1 lg:order-2">
-            <div data-anim="image" className="overflow-hidden bg-bg-muted">
+            <div data-anim="image" className="relative aspect-[3/4] overflow-hidden bg-bg-muted">
               <Image
                 src="/solar-lights.jpg"
-                alt="Solar street lights along an outdoor walkway at night"
-                width={1200}
-                height={900}
-                className="h-auto w-full object-cover"
+                alt="Solar street lights along an outdoor walkway at dusk"
+                fill
+                quality={92}
+                className="object-cover object-center"
                 sizes="(max-width:1024px) 100vw, 50vw"
               />
             </div>

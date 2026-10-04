@@ -9,19 +9,20 @@ export function NodeCard({ node }: { node: CatalogNode }) {
   return (
     <article className="product-card group">
       <Link href={`/categories/${node.slug}`} className="block">
-        <div className="relative aspect-square overflow-hidden border border-line bg-white">
+        <div className="relative aspect-square overflow-hidden border border-line bg-bg-deep">
           {img && (
             <Image
               src={img}
               alt={node.name}
               fill
+              quality={90}
               sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
-              className="product-card-img object-contain p-5"
+              className="product-card-img object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
             />
           )}
         </div>
-        <div className="mt-3 flex items-start justify-between gap-3">
-          <h3 className="text-base font-semibold text-ink transition-colors group-hover:text-accent">
+        <div className="mt-4 flex items-start justify-between gap-3">
+          <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug tracking-tight text-ink transition-colors group-hover:text-accent">
             {node.name}
           </h3>
           <span className="shrink-0 pt-0.5 text-xs tabular-nums text-ink-soft">

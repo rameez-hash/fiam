@@ -145,7 +145,7 @@ export function Footer() {
                   </svg>
                 </span>
                 <Link href="/stores" className="pt-1.5 hover:text-white">
-                  Stores across Pakistan — view locator
+                  Stores across Pakistan, view locator
                 </Link>
               </li>
             </ul>
@@ -154,7 +154,7 @@ export function Footer() {
           <div>
             <h3 className="text-base font-semibold">Get the latest updates</h3>
             <p className="mt-5 text-sm leading-relaxed text-white/65">
-              Product launches and project lighting tips — straight to your inbox.
+              Product launches and project lighting tips, straight to your inbox.
             </p>
             <form className="mt-5 flex overflow-hidden rounded-sm bg-white">
               <label className="sr-only" htmlFor="footer-newsletter">
@@ -182,7 +182,7 @@ export function Footer() {
         {/* Bottom copyright */}
         <div className="py-6 text-center text-sm text-white/55">
           <p>
-            Copyright © {new Date().getFullYear()} {company.legalName}. All rights reserved.
+            Copyright © {new Date().getFullYear()} {company.name}. All rights reserved.
           </p>
         </div>
       </div>

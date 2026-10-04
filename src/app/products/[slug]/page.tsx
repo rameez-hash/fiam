@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .join(", ");
   return buildMetadata({
     title: `${product.code} ${product.seriesTitle || family?.name || ""}`.trim(),
-    description: `FIAM ${product.code}${product.seriesTitle ? ` — ${product.seriesTitle}` : ""}. ${specText}. Available in Pakistan from Fiam Pakistan.`.slice(0, 300),
+    description: `FIAM ${product.code}${product.seriesTitle ? ` - ${product.seriesTitle}` : ""}. ${specText}. Available in Pakistan from Fiam Pakistan.`.slice(0, 300),
     path: `/products/${product.slug}`,
     image: productImage(product) || undefined,
     keywords: [product.code, family?.name ?? "", product.seriesTitle].filter(Boolean),

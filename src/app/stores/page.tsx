@@ -29,72 +29,81 @@ export default function StoresPage() {
         ])}
       />
 
-      <section className="bg-bg-deep text-white">
-        <div className="container-page grid gap-10 py-16 sm:py-20 lg:grid-cols-[1.4fr_1fr] lg:items-end">
-          <div>
-            <p data-anim="fade" className="text-sm text-white/60">
-              Store locator
-            </p>
-            <h1 data-anim="lines" className="mt-3 text-4xl sm:text-6xl font-semibold tracking-tight">
-              Find Fiam near you
-            </h1>
-            <p data-anim="fade" data-delay="0.15" className="mt-4 max-w-xl text-white/70 leading-relaxed">
-              Retail partners across Pakistan. Search by city, area, or store name — then call ahead or
-              get directions.
-            </p>
-            <div data-anim="fade" data-delay="0.25" className="mt-6 flex flex-wrap gap-4 text-sm">
-              <a href={`mailto:${storeContact.email}`} className="text-white hover:text-accent">
-                {storeContact.email}
-              </a>
-              <a href={`tel:${storeContact.phoneTel}`} className="text-white hover:text-accent">
-                {storeContact.phone}
-              </a>
+      <section className="border-b border-line bg-bg-deep text-white">
+        <div className="container-page py-16 sm:py-20">
+          <p data-anim="fade" className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">
+            Store locator
+          </p>
+          <div className="mt-4 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <h1 data-anim="lines" className="text-4xl font-semibold tracking-tight sm:text-6xl">
+                Find Fiam near you
+              </h1>
+              <p data-anim="fade" data-delay="0.15" className="mt-4 max-w-xl leading-relaxed text-white/70">
+                Retail partners across Pakistan. Search by city, area, store name, or phone, then call
+                or get directions.
+              </p>
             </div>
+
+            <dl data-anim="stagger" className="grid grid-cols-2 gap-8 lg:min-w-[240px]">
+              <div>
+                <dt className="text-sm text-white/50">Stores</dt>
+                <dd className="mt-1 text-4xl font-semibold tabular-nums sm:text-5xl">
+                  <span data-anim="count" data-value={total}>
+                    {total}
+                  </span>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-sm text-white/50">Cities</dt>
+                <dd className="mt-1 text-4xl font-semibold tabular-nums sm:text-5xl">
+                  <span data-anim="count" data-value={storeCities.length}>
+                    {storeCities.length}
+                  </span>
+                </dd>
+              </div>
+            </dl>
           </div>
 
-          <dl data-anim="stagger" data-delay="0.2" className="grid grid-cols-2 gap-6 border-t border-white/15 pt-6 lg:border-0 lg:pt-0">
-            <div>
-              <dt className="text-sm text-white/55">Stores</dt>
-              <dd className="mt-1 text-5xl font-semibold tabular-nums">
-                <span data-anim="count" data-value={total}>
-                  {total}
-                </span>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm text-white/55">Cities</dt>
-              <dd className="mt-1 text-5xl font-semibold tabular-nums">
-                <span data-anim="count" data-value={storeCities.length}>
-                  {storeCities.length}
-                </span>
-              </dd>
-            </div>
-          </dl>
+          <div data-anim="fade" data-delay="0.25" className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/65">
+            <a href={`mailto:${storeContact.email}`} className="transition-colors hover:text-white">
+              {storeContact.email}
+            </a>
+            <a href={`tel:${storeContact.phoneTel}`} className="transition-colors hover:text-white">
+              {storeContact.phone}
+            </a>
+          </div>
         </div>
       </section>
 
       <StoreLocator />
 
-      <section className="container-page pb-20">
-        <div data-anim="fade" className="border border-line bg-bg-muted p-6 sm:p-8">
-          <h2 className="text-xl font-semibold">Need help finding a dealer?</h2>
-          <p className="mt-2 max-w-xl text-sm text-ink-soft leading-relaxed">
-            Contact Fiam Pakistan and we will guide you to the right store or arrange a corporate
-            quotation.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-deep"
-            >
-              Contact us
-            </Link>
-            <Link
-              href="/corporate"
-              className="inline-flex border border-line bg-white px-5 py-2.5 text-sm font-medium hover:border-ink"
-            >
-              Corporate / bulk order
-            </Link>
+      <section className="border-t border-line bg-white">
+        <div className="container-page py-14">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-xl">
+              <h2 data-anim="lines" className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                Need help finding a dealer?
+              </h2>
+              <p data-anim="fade" className="mt-3 text-sm leading-relaxed text-ink-soft">
+                Contact Fiam Pakistan and we will guide you to the right store or arrange a corporate
+                quotation.
+              </p>
+            </div>
+            <div data-anim="fade" className="flex flex-wrap gap-3">
+              <Link
+                href="/contact"
+                className="inline-flex bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-deep"
+              >
+                Contact us
+              </Link>
+              <Link
+                href="/corporate"
+                className="inline-flex border border-ink px-5 py-2.5 text-sm font-medium hover:bg-ink hover:text-white"
+              >
+                Corporate / bulk order
+              </Link>
+            </div>
           </div>
         </div>
       </section>
