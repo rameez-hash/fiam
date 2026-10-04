@@ -5,12 +5,12 @@ import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductGallery } from "@/components/ProductGallery";
 import {
-  catalogProducts,
   getAncestors,
   getCatalogProduct,
   getNodeById,
   getProductSiblings,
   getRootCategory,
+  getShowcaseProducts,
   productImage,
   specValue,
 } from "@/data/catalog";
@@ -19,8 +19,12 @@ import { JsonLd, breadcrumbJsonLd, buildMetadata, productJsonLd } from "@/lib/se
 
 type Props = { params: Promise<{ slug: string }> };
 
+/** Keep deploys small: prebuild a few popular products, render the rest on demand (ISR). */
+export const revalidate = 86400;
+export const dynamicParams = true;
+
 export function generateStaticParams() {
-  return catalogProducts.map((p) => ({ slug: p.slug }));
+  return getShowcaseProducts(24).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

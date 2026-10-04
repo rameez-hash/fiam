@@ -30,7 +30,6 @@ export function ProductCard({
               src={img}
               alt={`${product.code} ${product.seriesTitle}`.trim()}
               fill
-              quality={92}
               sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
               className="product-card-img product-shot object-contain p-1.5 sm:p-2"
             />

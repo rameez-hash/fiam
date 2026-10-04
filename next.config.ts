@@ -249,6 +249,10 @@ const legacyRedirects: Redirect[] = [
 
 const nextConfig: NextConfig = {
   images: {
+    // Catalog has 2.5k+ products; Vercel Image Optimization transforms
+    // burn the hobby quota on every unique product/size crawl. Serve
+    // static assets directly instead (CDN still caches them).
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

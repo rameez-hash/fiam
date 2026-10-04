@@ -15,7 +15,6 @@ export function NodeCard({ node }: { node: CatalogNode }) {
               src={img}
               alt={node.name}
               fill
-              quality={90}
               sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
               className="product-card-img object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
             />

@@ -26,6 +26,10 @@ import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
+/** Prebuild top categories + series only; deeper nodes generate on demand. */
+export const revalidate = 86400;
+export const dynamicParams = true;
+
 function keywordsForRoot(rootId?: string): string[] {
   switch (rootId) {
     case "7":
@@ -42,7 +46,7 @@ function keywordsForRoot(rootId?: string): string[] {
 }
 
 export function generateStaticParams() {
-  return catalogNodes.map((n) => ({ slug: n.slug }));
+  return catalogNodes.filter((n) => n.depth <= 1).map((n) => ({ slug: n.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
