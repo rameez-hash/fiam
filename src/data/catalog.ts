@@ -159,6 +159,14 @@ export function countProducts(node: CatalogNode): number {
   return node.products.length + getChildren(node).reduce((sum, c) => sum + countProducts(c), 0);
 }
 
+/** Homepage / mega-menu covers for top-level categories */
+export const categoryCovers: Record<string, string> = {
+  "commercial-led-light": "/categories/commercial-led-light-v3.jpg",
+  "fixtures-led-module": "/categories/fixtures-module-v5.jpg",
+  "outdoor-light": "/categories/outdoor-light-v2.jpg",
+  "decorative-lighting": "/categories/decorative-lighting-v2.jpg",
+};
+
 export function nodeImage(node: CatalogNode): string {
   if (node.image) return node.image;
   const first = getNodeProducts(node)[0];
@@ -168,6 +176,10 @@ export function nodeImage(node: CatalogNode): string {
     if (img) return img;
   }
   return "";
+}
+
+export function categoryCoverImage(node: CatalogNode): string {
+  return categoryCovers[node.slug] || nodeImage(node);
 }
 
 export const productImage = (p: CatalogProduct) => p.cover || p.images[0] || "";

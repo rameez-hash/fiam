@@ -1,13 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { countProducts, nodeImage, topCategories } from "@/data/catalog";
-
-const categoryCovers: Record<string, string> = {
-  "commercial-led-light": "/categories/commercial-led-light-v3.jpg",
-  "fixtures-led-module": "/categories/fixtures-module-v5.jpg",
-  "outdoor-light": "/categories/outdoor-light-v2.jpg",
-  "decorative-lighting": "/categories/decorative-lighting-v2.jpg",
-};
+import { categoryCoverImage, countProducts, topCategories } from "@/data/catalog";
 
 export function CategoryGrid() {
   return (
@@ -33,7 +26,7 @@ export function CategoryGrid() {
 
         <div data-anim="stagger" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {topCategories.map((cat, i) => {
-            const src = categoryCovers[cat.slug] || nodeImage(cat);
+            const src = categoryCoverImage(cat);
             return (
               <Link
                 key={cat.slug}
