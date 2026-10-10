@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { sendAutoReply, sendInquiryMail } from "@/lib/mail";
+import { sendInquiryMail } from "@/lib/mail";
 
 export type InquiryState = { error?: string; values?: Record<string, string> };
 
@@ -53,9 +53,6 @@ export async function sendContactInquiry(
     return { ...sendFailed, values };
   }
 
-  await sendAutoReply({ to: email, name }).catch((err) =>
-    console.error("Contact auto-reply failed", err),
-  );
   redirect("/thank-you?type=contact");
 }
 
@@ -101,9 +98,6 @@ export async function sendCorporateInquiry(
     return sendFailed;
   }
 
-  await sendAutoReply({ to: email, name: contactName }).catch((err) =>
-    console.error("Corporate auto-reply failed", err),
-  );
   redirect("/thank-you?type=corporate");
 }
 

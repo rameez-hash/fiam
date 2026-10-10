@@ -72,30 +72,3 @@ export async function sendInquiryMail({
     html: renderTable(title, rows, message),
   });
 }
-
-export async function sendAutoReply({ to, name }: { to: string; name: string }) {
-  const transport = getTransport();
-  const from = env("SMTP_USER");
-  const greeting = name ? `Hi ${name},` : "Hello,";
-  const text = [
-    greeting,
-    "",
-    "Thank you for contacting Fiam Pakistan. We have received your message and our team will get back to you within 24 hours.",
-    "",
-    "For urgent queries, call +92 321 8208116 (Mon-Sat, 10:00 AM - 9:00 PM).",
-    "",
-    "Fiam Pakistan",
-    "https://fiam.com.pk",
-  ].join("\n");
-
-  await transport.sendMail({
-    from: `"Fiam Pakistan" <${from}>`,
-    to,
-    subject: "We received your message | Fiam Pakistan",
-    text,
-    html: `<div style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a">${text
-      .split("\n")
-      .map((l) => (l ? `<p style="margin:0 0 4px">${escapeHtml(l)}</p>` : "<br/>"))
-      .join("")}</div>`,
-  });
-}

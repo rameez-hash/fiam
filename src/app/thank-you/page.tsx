@@ -12,12 +12,12 @@ const variants = {
   contact: {
     eyebrow: "Message sent",
     title: "Thank you for reaching out",
-    text: "Your message is with our team. We reply within 24 hours on working days, and a confirmation is on its way to your inbox.",
+    text: "Your message is with our team. We reply within 24 hours on working days.",
   },
   corporate: {
     eyebrow: "Request received",
     title: "Thank you for your corporate request",
-    text: "Our corporate desk will review your project or bulk order and get back to you with product details or a quotation. A confirmation is on its way to your inbox.",
+    text: "Our corporate desk will review your project or bulk order and get back to you with product details or a quotation.",
   },
   newsletter: {
     eyebrow: "Subscribed",

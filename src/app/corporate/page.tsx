@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     question: "How do I send a bulk order inquiry?",
-    answer: `Fill the corporate form on this page and press submit. Your company details, quantity, and product interest go straight to ${company.email}, and you get a confirmation email.`,
+    answer: `Fill the corporate form on this page and press submit. Your company details, quantity, and product interest go straight to ${company.email}.`,
   },
 ];
 
