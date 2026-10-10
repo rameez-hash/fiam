@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContactForm } from "@/components/ContactForm";
 import { company } from "@/data/products";
 import { contactPageKeywords } from "@/data/seo-keywords";
 import { JsonLd, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
@@ -67,58 +68,7 @@ export default function ContactPage() {
           </ul>
         </div>
 
-        <form
-          data-anim="fade"
-          data-delay="0.1"
-          className="grid gap-5 border border-line bg-white p-8 lg:p-10"
-          action={`mailto:${company.email}`}
-          method="post"
-          encType="text/plain"
-        >
-          <h2 className="font-display text-2xl font-semibold">Send a message</h2>
-          <label className="grid gap-2 text-sm">
-            <span className="font-medium">Name</span>
-            <input
-              name="name"
-              required
-              className="border border-line bg-bg px-4 py-3 outline-none focus:border-accent"
-            />
-          </label>
-          <label className="grid gap-2 text-sm">
-            <span className="font-medium">Email</span>
-            <input
-              type="email"
-              name="email"
-              required
-              className="border border-line bg-bg px-4 py-3 outline-none focus:border-accent"
-            />
-          </label>
-          <label className="grid gap-2 text-sm">
-            <span className="font-medium">Company / Project</span>
-            <input
-              name="company"
-              className="border border-line bg-bg px-4 py-3 outline-none focus:border-accent"
-            />
-          </label>
-          <label className="grid gap-2 text-sm">
-            <span className="font-medium">Message</span>
-            <textarea
-              name="message"
-              required
-              rows={5}
-              className="resize-y border border-line bg-bg px-4 py-3 outline-none focus:border-accent"
-            />
-          </label>
-          <button
-            type="submit"
-            className="mt-2 inline-flex justify-center bg-accent px-7 py-3.5 text-[12px] font-semibold tracking-[0.16em] uppercase text-white hover:bg-accent-deep"
-          >
-            Submit inquiry
-          </button>
-          <p className="text-xs text-ink-soft">
-            Opens your email app to send the inquiry to {company.email}.
-          </p>
-        </form>
+        <ContactForm />
       </section>
     </>
   );

@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { company } from "@/data/products";
+import { useActionState, useMemo, useState } from "react";
+import { sendCorporateInquiry, type InquiryState } from "@/app/actions/inquiry";
+import { Honeypot } from "./Honeypot";
 
 type CategoryOption = { slug: string; name: string; series: { slug: string; name: string }[] };
 
@@ -39,7 +40,10 @@ const initial: FormState = {
 
 export function CorporateOrderForm({ categories }: { categories: CategoryOption[] }) {
   const [form, setForm] = useState<FormState>(initial);
-  const [sent, setSent] = useState(false);
+  const [state, formAction, pending] = useActionState<InquiryState, FormData>(
+    sendCorporateInquiry,
+    {},
+  );
 
   const allSeries = useMemo(() => categories.flatMap((c) => c.series), [categories]);
   const filteredSeries = useMemo(() => {
@@ -55,71 +59,20 @@ export function CorporateOrderForm({ categories }: { categories: CategoryOption[
     });
   }
 
-  function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const typeLabel =
-      inquiryTypes.find((t) => t.value === form.inquiryType)?.label || form.inquiryType;
-    const categoryName =
-      categories.find((c) => c.slug === form.category)?.name || form.category || "Not specified";
-    const productName =
-      allSeries.find((s) => s.slug === form.product)?.name || form.product || "Not specified";
-
-    const body = [
-      `Inquiry type: ${typeLabel}`,
-      `Company: ${form.companyName}`,
-      `Contact: ${form.contactName}`,
-      `Email: ${form.email}`,
-      `Phone: ${form.phone}`,
-      `City: ${form.city || "-"}`,
-      `Category: ${categoryName}`,
-      `Series: ${productName}`,
-      `Quantity / bulk size: ${form.quantity || "-"}`,
-      "",
-      "Message:",
-      form.message,
-    ].join("\n");
-
-    const subject = encodeURIComponent(
-      `[Corporate] ${typeLabel} - ${form.companyName || form.contactName}`
-    );
-    const mailto = `mailto:${company.email}?subject=${subject}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setSent(true);
-  }
-
-  if (sent) {
-    return (
-      <div className="border border-line bg-white p-8 lg:p-10">
-        <p className="text-[12px] font-semibold tracking-[0.18em] uppercase text-accent">Received</p>
-        <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight">
-          Thank you. Open your email app to send
-        </h3>
-        <p className="mt-4 text-ink-soft leading-relaxed">
-          Your corporate inquiry is ready to send to{" "}
-          <a href={`mailto:${company.email}`} className="text-ink underline">
-            {company.email}
-          </a>
-          . Our team will follow up with product details or a bulk quotation.
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            setSent(false);
-            setForm(initial);
-          }}
-          className="mt-8 inline-flex border border-ink px-6 py-3 text-[12px] font-semibold tracking-[0.14em] uppercase hover:bg-ink hover:text-white transition-colors"
-        >
-          Submit another request
-        </button>
-      </div>
-    );
-  }
+  const typeLabel =
+    inquiryTypes.find((t) => t.value === form.inquiryType)?.label || form.inquiryType;
+  const categoryName = categories.find((c) => c.slug === form.category)?.name ?? "";
+  const seriesName = allSeries.find((s) => s.slug === form.product)?.name ?? "";
 
   const field =
     "border border-line bg-bg px-4 py-3 outline-none focus:border-accent w-full";
 
   return (
-    <form onSubmit={onSubmit} className="border border-line bg-white p-8 lg:p-10 grid gap-5">
+    <form action={formAction} className="border border-line bg-white p-8 lg:p-10 grid gap-5">
+      <Honeypot />
+      <input type="hidden" name="inquiryTypeLabel" value={typeLabel} />
+      <input type="hidden" name="categoryName" value={categoryName} />
+      <input type="hidden" name="seriesName" value={seriesName} />
       <div>
         <p className="text-[12px] font-semibold tracking-[0.18em] uppercase text-accent">
           Corporate desk
@@ -267,14 +220,21 @@ export function CorporateOrderForm({ categories }: { categories: CategoryOption[
         </label>
       </div>
 
+      {state.error && (
+        <p role="alert" className="border border-accent/40 bg-accent/5 px-4 py-3 text-sm text-accent-deep">
+          {state.error}
+        </p>
+      )}
+
       <button
         type="submit"
-        className="mt-2 inline-flex justify-center bg-accent px-7 py-3.5 text-[12px] font-semibold tracking-[0.16em] uppercase text-white hover:bg-accent-deep"
+        disabled={pending}
+        className="mt-2 inline-flex justify-center bg-accent px-7 py-3.5 text-[12px] font-semibold tracking-[0.16em] uppercase text-white hover:bg-accent-deep disabled:cursor-wait disabled:opacity-70"
       >
-        Submit corporate request
+        {pending ? "Sending..." : "Submit corporate request"}
       </button>
       <p className="text-xs text-ink-soft">
-        Submissions open your email client to send the request to {company.email}.
+        Our corporate desk replies with product details or a bulk quotation.
       </p>
     </form>
   );

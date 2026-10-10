@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { topCategories } from "@/data/catalog";
 import { company } from "@/data/products";
+import { NewsletterForm } from "./NewsletterForm";
 
 const informationLinks = [
   { href: "/about", label: "About our company" },
@@ -156,26 +157,7 @@ export function Footer() {
             <p className="mt-5 text-sm leading-relaxed text-white/65">
               Product launches and project lighting tips, straight to your inbox.
             </p>
-            <form className="mt-5 flex overflow-hidden rounded-sm bg-white">
-              <label className="sr-only" htmlFor="footer-newsletter">
-                Email address
-              </label>
-              <input
-                id="footer-newsletter"
-                type="email"
-                placeholder="Enter your email"
-                className="w-full bg-transparent px-4 py-3 text-sm text-[#1a1c1e] outline-none placeholder:text-black/40"
-              />
-              <button
-                type="button"
-                aria-label="Subscribe"
-                className="px-4 text-[#1a1c1e] transition-colors hover:text-accent"
-              >
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
 
