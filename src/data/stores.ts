@@ -84,7 +84,7 @@ export const storeCities: CityStores[] = [
       {
         name: "Crystal Lights",
         address: "Chungi #9, Near Food Street and Khana Farhang Iran, Khanewal Road",
-        phones: ["061-6220164"],
+        phones: ["0300-6320164", "0320-6320164"],
         mapUrl:
           "https://www.google.com/maps/place/Crystal+Lights/@30.2090469,71.4680721,18z/data=!4m10!1m2!2m1!1sCrystal+Lights,+Chungi+%239,+Near+Food+Street+and+Khana+Farhang+Iran,+Khanewal+Road,+Multan,+Pakistan!3m6!1s0x393b33f11243f78b:0x4af2d3cdd679f7c9!8m2!3d30.2090469!4d71.4693596!15sCmNDcnlzdGFsIExpZ2h0cywgQ2h1bmdpICM5LCBOZWFyIEZvb2QgU3RyZWV0IGFuZCBLaGFuYSBGYXJoYW5nIElyYW4sIEtoYW5ld2FsIFJvYWQsIE11bHRhbiwgUGFraXN0YW6SARFlbGVjdHJvbmljc19zdG9yZeABAA!16s%2Fg%2F11gfnh2_l1?entry=ttu",
       },
