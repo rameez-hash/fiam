@@ -28,12 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: n.depth === 0 ? 0.9 : n.depth === 1 ? 0.8 : 0.75,
   }));
 
+  // No image URLs in sitemap: pages still index; cuts crawler CDN hits on gallery assets.
   const productRoutes: MetadataRoute.Sitemap = catalogProducts.map((p) => ({
     url: `${base}/products/${p.slug}`,
     lastModified: now,
     changeFrequency: "monthly",
     priority: 0.7,
-    images: p.images.slice(0, 3).map((src) => `${base}${src}`),
   }));
 
   return [...staticRoutes, ...categoryRoutes, ...productRoutes];
