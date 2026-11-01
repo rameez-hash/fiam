@@ -18,7 +18,7 @@ export function ContactForm() {
       data-anim="fade"
       data-delay="0.1"
       action={formAction}
-      className="grid gap-5 border border-line bg-bg-muted p-8 lg:p-10"
+      className="grid gap-5 border border-line bg-white p-8 lg:p-10"
     >
       <h2 className="font-display text-2xl font-semibold">Send a message</h2>
       <Honeypot />

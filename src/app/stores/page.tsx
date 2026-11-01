@@ -74,7 +74,7 @@ export default function StoresPage() {
 
       <StoreLocator />
 
-      <section className="border-t border-line bg-bg">
+      <section className="border-t border-line bg-white">
         <div className="container-page py-14">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-xl">
@@ -95,7 +95,7 @@ export default function StoresPage() {
               </Link>
               <Link
                 href="/corporate"
-                className="inline-flex border border-white/30 px-5 py-2.5 text-sm font-medium hover:bg-white hover:text-[#111]"
+                className="inline-flex border border-ink px-5 py-2.5 text-sm font-medium hover:bg-ink hover:text-white"
               >
                 Corporate / bulk order
               </Link>

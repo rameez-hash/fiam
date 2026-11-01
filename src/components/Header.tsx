@@ -110,10 +110,10 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
 
       <header
         ref={headerRef}
-        className={`sticky top-0 z-50 border-b border-white/10 bg-[#0c0c0c]/80 text-ink backdrop-blur-xl transition-shadow ${scrolled ? "shadow-[0_12px_40px_rgba(0,0,0,0.45)]" : ""}`}
+        className={`sticky top-0 z-50 border-b border-line bg-white transition-shadow ${scrolled ? "shadow-sm" : ""}`}
       >
         <div className="container-page flex h-16 items-center justify-between gap-6">
-          <Logo priority size="md" variant="light" />
+          <Logo priority size="md" variant="dark" />
 
           <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-ink">
             {nav.map((item) =>
@@ -144,7 +144,7 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
                       shopOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
                     }`}
                   >
-                    <div className="border-b border-white/10 bg-[#101010]/95 shadow-[0_24px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl">
+                    <div className="border-b border-line bg-white shadow-lg">
                       <div className="container-page grid grid-cols-[240px_1fr_260px] gap-8 py-7">
                         <div className="border-r border-line pr-6">
                           <p className="text-xs font-medium text-ink-soft">Categories</p>

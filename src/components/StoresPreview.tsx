@@ -52,7 +52,7 @@ function StoreRow({ store, city }: { store: Store; city: string }) {
           href={mapsUrl(store.name, store.address, city, store.mapUrl)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex border border-white/30 px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-[#111]"
+          className="inline-flex border border-white/30 px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-ink"
         >
           Directions
         </a>

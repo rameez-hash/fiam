@@ -45,7 +45,7 @@ export function ProductGallery({ images, alt }: { images: string[]; alt: string 
             <div className="flex h-full items-center justify-center text-sm text-ink-soft">No image</div>
           )}
           {unique.length > 1 && (
-            <p className="absolute bottom-3 right-4 rounded-sm bg-black/55 px-2 py-0.5 text-[11px] tabular-nums text-white">
+            <p className="absolute bottom-3 right-4 rounded-sm bg-white/80 px-2 py-0.5 text-[11px] tabular-nums text-ink-soft">
               {active + 1} / {unique.length}
             </p>
           )}

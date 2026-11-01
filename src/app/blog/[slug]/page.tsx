@@ -67,7 +67,7 @@ function Block({ block }: { block: BlogBlock }) {
             </thead>
             <tbody>
               {block.rows.map((row) => (
-                <tr key={row.join("-")} className="border-t border-line odd:bg-bg-muted even:bg-bg">
+                <tr key={row.join("-")} className="border-t border-line odd:bg-white even:bg-bg">
                   {row.map((cell, i) => (
                     <td key={`${cell}-${i}`} className="px-4 py-3 align-top text-ink/90">
                       {cell}
@@ -207,7 +207,7 @@ export default async function BlogPostPage({ params }: Props) {
               </Link>
               <Link
                 href="/blog"
-                className="inline-flex border border-white/30 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.14em] hover:bg-white hover:text-[#111]"
+                className="inline-flex border border-ink px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.14em] hover:bg-ink hover:text-white"
               >
                 All articles
               </Link>

@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0c0c0c;
-  --bg-deep: #070707;
-  --bg-muted: #161616;
-  --ink: #f4f1eb;
-  --ink-soft: #a8a39a;
+  --bg: #f7f7f5;
+  --bg-deep: #1a1a1a;
+  --bg-muted: #ecece8;
+  --ink: #1a1a1a;
+  --ink-soft: #666660;
   --accent: #e85d04;
   --accent-deep: #c44d00;
-  --line: rgba(255, 255, 255, 0.12);
+  --line: rgba(26, 26, 26, 0.12);
 }
 
 @theme inline {
@@ -33,18 +33,15 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(ellipse 70% 36% at 50% -8%, rgba(232, 93, 4, 0.1), transparent 55%),
-    var(--bg);
+  background: var(--bg);
   color: var(--ink);
-  color-scheme: dark;
   font-family: var(--font-montserrat), system-ui, sans-serif;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: #e85d04;
-  color: #fff;
+  background: #ffd9bf;
+  color: var(--ink);
 }
 
 .font-display {
@@ -108,7 +105,7 @@ html.motion-ready .hero-line {
 }
 
 mark.hl {
-  background: rgba(232, 93, 4, 0.35);
+  background: #ffe2cc;
   color: inherit;
   padding: 0 1px;
 }

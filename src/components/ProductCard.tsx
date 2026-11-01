@@ -19,7 +19,7 @@ export function ProductCard({
   return (
     <article className="product-card group">
       <Link href={`/products/${product.slug}`} className="block">
-        <div className="relative aspect-square overflow-hidden border border-line/60 bg-bg-muted transition-colors group-hover:border-accent/70">
+        <div className="relative aspect-square overflow-hidden border border-line/60 bg-white">
           {typeof index === "number" && (
             <span className="absolute left-3 top-3 z-[1] text-[11px] font-medium tabular-nums text-ink/35">
               {String(index + 1).padStart(2, "0")}
