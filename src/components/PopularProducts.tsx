@@ -6,7 +6,7 @@ export function PopularProducts() {
   const items = getShowcaseProducts(8);
 
   return (
-    <section className="section-pad bg-white">
+    <section className="section-pad bg-bg">
       <div className="container-page">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
@@ -26,7 +26,7 @@ export function PopularProducts() {
           <Link
             data-anim="fade"
             href="/products"
-            className="inline-flex self-start border border-ink px-6 py-3 text-sm font-medium transition-colors hover:bg-ink hover:text-white md:self-auto"
+            className="inline-flex self-start border border-white/25 px-6 py-3 text-sm font-medium transition-colors hover:bg-white hover:text-[#111] md:self-auto"
           >
             Browse full catalog
           </Link>

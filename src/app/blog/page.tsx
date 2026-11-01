@@ -51,7 +51,7 @@ export default function BlogPage() {
             <li key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-colors hover:border-ink"
+                className="group flex h-full flex-col overflow-hidden border border-line bg-bg-muted transition-colors hover:border-accent"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-bg-deep">
                   <Image

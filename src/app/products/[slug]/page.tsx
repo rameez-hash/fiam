@@ -100,7 +100,7 @@ export default async function ProductDetailPage({ params }: Props) {
         ]}
       />
 
-      <section className="border-b border-line bg-white">
+      <section className="border-b border-line bg-bg">
         <div className="container-page py-8 lg:py-12">
           <nav
             className="mb-8 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-ink-soft"
@@ -165,7 +165,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 </Link>
                 <Link
                   href="/corporate"
-                  className="inline-flex border border-ink px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-ink hover:text-white"
+                  className="inline-flex border border-white/30 px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-white hover:text-[#111]"
                 >
                   Bulk order
                 </Link>
@@ -218,7 +218,7 @@ export default async function ProductDetailPage({ params }: Props) {
       )}
 
       {sections.map((s) => (
-        <section key={s.title} className="border-b border-line bg-white">
+        <section key={s.title} className="border-b border-line bg-bg">
           <div className="container-page py-14">
             <h2 data-anim="lines" className="text-2xl font-semibold tracking-tight">
               {s.title}
@@ -246,7 +246,7 @@ export default async function ProductDetailPage({ params }: Props) {
       ))}
 
       {siblings.length > 0 && family && (
-        <section className="section-pad bg-white">
+        <section className="section-pad bg-bg">
           <div className="container-page">
             <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div>

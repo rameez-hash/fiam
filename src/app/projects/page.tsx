@@ -70,7 +70,7 @@ export default function ProjectsPage() {
           <Link
             key={project.title}
             href={project.href}
-            className="group border border-line bg-white p-8 transition-colors hover:border-accent"
+            className="group border border-line bg-bg-muted p-8 transition-colors hover:border-accent"
           >
             <h2 className="font-display text-3xl font-semibold tracking-tight group-hover:text-accent transition-colors">
               {project.title}

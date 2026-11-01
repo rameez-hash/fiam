@@ -68,7 +68,7 @@ export function CorporateOrderForm({ categories }: { categories: CategoryOption[
     "border border-line bg-bg px-4 py-3 outline-none focus:border-accent w-full";
 
   return (
-    <form action={formAction} className="border border-line bg-white p-8 lg:p-10 grid gap-5">
+    <form action={formAction} className="grid gap-5 border border-line bg-bg-muted p-8 lg:p-10">
       <Honeypot />
       <input type="hidden" name="inquiryTypeLabel" value={typeLabel} />
       <input type="hidden" name="categoryName" value={categoryName} />

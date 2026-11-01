@@ -22,7 +22,7 @@ const features = [
 
 export function SolarLights() {
   return (
-    <section className="border-y border-line bg-white">
+    <section className="border-y border-line bg-bg">
       <div className="container-page section-pad">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="order-2 lg:order-1">

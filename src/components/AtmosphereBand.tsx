@@ -29,7 +29,7 @@ export function AtmosphereBand() {
           <div data-anim="fade" data-delay="0.1">
             <Link
               href="/projects"
-              className="mt-7 inline-flex bg-white px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-accent hover:text-white"
+              className="mt-7 inline-flex bg-white px-6 py-3 text-sm font-medium text-[#111] transition-colors hover:bg-accent hover:text-white"
             >
               View projects
             </Link>

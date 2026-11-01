@@ -122,7 +122,7 @@ function StoreLocatorView({ initialQuery, initialCity }: { initialQuery: string;
   return (
     <section className="bg-bg">
       <div className="container-page section-pad">
-        <div className="border border-line bg-white p-4 sm:p-5">
+        <div className="border border-line bg-bg-muted p-4 sm:p-5">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
             <label htmlFor="store-search" className="text-sm font-medium text-ink">
               Find a store
@@ -169,7 +169,7 @@ function StoreLocatorView({ initialQuery, initialCity }: { initialQuery: string;
                 Clear
               </button>
             ) : (
-              <kbd className="absolute right-4 top-1/2 hidden -translate-y-1/2 border border-line bg-white px-2 py-0.5 text-xs text-ink-soft sm:block">
+              <kbd className="absolute right-4 top-1/2 hidden -translate-y-1/2 border border-line bg-bg px-2 py-0.5 text-xs text-ink-soft sm:block">
                 /
               </kbd>
             )}
@@ -181,7 +181,7 @@ function StoreLocatorView({ initialQuery, initialCity }: { initialQuery: string;
               onClick={() => setCity(ALL)}
               aria-pressed={city === ALL}
               className={`px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors sm:text-[12px] ${
-                city === ALL ? "bg-ink text-white" : "bg-bg text-ink hover:bg-bg-muted"
+                city === ALL ? "bg-white text-[#111]" : "bg-bg text-ink hover:bg-bg-deep"
               }`}
             >
               All <span className="ml-1 tabular-nums opacity-60">{matchedTotal}</span>
@@ -197,7 +197,7 @@ function StoreLocatorView({ initialQuery, initialCity }: { initialQuery: string;
                   aria-pressed={active}
                   disabled={n === 0 && !active}
                   className={`px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors disabled:cursor-not-allowed disabled:opacity-35 sm:text-[12px] ${
-                    active ? "bg-ink text-white" : "bg-bg text-ink hover:bg-bg-muted"
+                    active ? "bg-white text-[#111]" : "bg-bg text-ink hover:bg-bg-deep"
                   }`}
                 >
                   {c.city} <span className="ml-1 tabular-nums opacity-60">{n}</span>
@@ -217,7 +217,7 @@ function StoreLocatorView({ initialQuery, initialCity }: { initialQuery: string;
                 </p>
               </div>
 
-              <div className="mt-6 divide-y divide-line border-y border-line bg-white">
+              <div className="mt-6 divide-y divide-line border-y border-line bg-bg-muted">
                 {group.stores.map((store) => (
                   <article
                     key={`${group.city}-${store.name}-${store.address}`}
@@ -269,7 +269,7 @@ function StoreLocatorView({ initialQuery, initialCity }: { initialQuery: string;
                         href={mapsUrl(store.name, store.address, group.city, store.mapUrl)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex border border-ink px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors hover:bg-ink hover:text-white"
+                        className="inline-flex border border-white/30 px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors hover:bg-white hover:text-[#111]"
                       >
                         Directions
                       </a>
@@ -281,7 +281,7 @@ function StoreLocatorView({ initialQuery, initialCity }: { initialQuery: string;
           ))}
 
           {shown === 0 && (
-            <div className="border border-dashed border-line bg-white px-6 py-12 text-center">
+            <div className="border border-dashed border-line bg-bg-muted px-6 py-12 text-center">
               <p className="text-lg font-semibold text-ink">No store matches that search</p>
               <p className="mx-auto mt-2 max-w-md text-sm text-ink-soft">
                 Try a city name, an area like DHA or Clifton, or part of a phone number.
@@ -290,7 +290,7 @@ function StoreLocatorView({ initialQuery, initialCity }: { initialQuery: string;
                 <button
                   type="button"
                   onClick={clear}
-                  className="border border-ink px-5 py-2.5 text-sm font-medium hover:bg-ink hover:text-white"
+                  className="border border-white/30 px-5 py-2.5 text-sm font-medium hover:bg-white hover:text-[#111]"
                 >
                   Show all stores
                 </button>

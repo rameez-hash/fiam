@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Rethink_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Motion } from "@/components/Motion";
@@ -11,6 +11,12 @@ import "./globals.css";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const rethink = Rethink_Sans({
+  variable: "--font-rethink",
   subsets: ["latin"],
   display: "swap",
 });
@@ -56,7 +62,7 @@ const motionBootScript = `(function(){var d=document.documentElement;d.classList
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${montserrat.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${montserrat.variable} ${rethink.variable} h-full`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: motionBootScript }} />
       </head>

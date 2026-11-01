@@ -45,7 +45,7 @@ export function CategoryGrid() {
               <Link
                 key={cat.slug}
                 href={`/categories/${cat.slug}`}
-                className="group relative min-h-[400px] overflow-hidden border border-white/15 bg-bg-deep text-white transition-[border-color] duration-300 hover:border-accent/60 lg:min-h-[460px]"
+                className="group relative min-h-[400px] overflow-hidden border border-accent bg-bg-deep text-white transition-shadow duration-300 hover:shadow-[0_0_0_1px_var(--accent)] lg:min-h-[460px]"
               >
                 <Image
                   src={src}
@@ -53,24 +53,23 @@ export function CategoryGrid() {
                   fill
                   quality={92}
                   sizes="(max-width:1024px) 50vw, 25vw"
-                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/20 transition-opacity duration-500 group-hover:from-black group-hover:via-black/45" />
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10" />
 
-                <span className="absolute inset-x-5 top-5 z-[1] flex justify-between text-[11px] font-semibold uppercase tracking-[0.14em] text-white/55">
+                <span className="absolute inset-x-5 top-5 z-[1] flex justify-between text-[11px] font-semibold uppercase tracking-[0.14em]">
                   <span className="text-accent">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="tabular-nums">{countProducts(cat)} models</span>
+                  <span className="tabular-nums text-white/70">{countProducts(cat)} models</span>
                 </span>
 
                 <div className="absolute inset-x-0 bottom-0 z-[1] p-5 sm:p-6">
-                  <h3 className="text-[1.35rem] font-semibold leading-snug tracking-tight sm:text-xl">
+                  <h3 className="font-[family-name:var(--font-rethink)] text-[1.35rem] font-semibold leading-snug tracking-tight sm:text-xl">
                     {cat.name}
                   </h3>
-                  <p className="mt-2 max-w-[28ch] text-sm leading-relaxed text-white/65 line-clamp-2">
+                  <p className="mt-2 max-w-[28ch] text-sm leading-relaxed text-white/70 line-clamp-2">
                     {cat.description}
                   </p>
-                  <span className="mt-6 inline-flex items-center gap-2 border border-white/25 bg-white/0 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors duration-300 group-hover:border-accent group-hover:bg-accent">
+                  <span className="mt-6 inline-flex items-center bg-accent px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors duration-300 group-hover:bg-accent-deep">
                     Explore
                   </span>
                 </div>

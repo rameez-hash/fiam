@@ -54,7 +54,7 @@ export default function ProductsPage() {
           <a
             key={cat.id}
             href={`#${cat.slug}`}
-            className="border border-line bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors hover:border-accent hover:text-accent"
+            className="border border-line bg-bg-muted px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors hover:border-accent hover:text-accent"
           >
             {cat.shortName}
           </a>

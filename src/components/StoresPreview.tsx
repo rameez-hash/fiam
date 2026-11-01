@@ -52,7 +52,7 @@ function StoreRow({ store, city }: { store: Store; city: string }) {
           href={mapsUrl(store.name, store.address, city, store.mapUrl)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex border border-white/30 px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-ink"
+          className="inline-flex border border-white/30 px-4 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-[#111]"
         >
           Directions
         </a>
@@ -68,17 +68,17 @@ export function StoresPreview() {
     <section className="border-y border-line bg-bg-deep text-white">
       <div className="container-page section-pad">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-xl">
+          <div className="min-w-0 max-w-3xl">
             <p data-anim="fade" className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">
               Store locator
             </p>
             <h2
               data-anim="lines"
-              className="mt-3 text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-tight tracking-tight"
+              className="mt-3 whitespace-nowrap text-[clamp(1.5rem,3.2vw,2.75rem)] font-semibold leading-tight tracking-tight"
             >
               Find a Fiam store near you
             </h2>
-            <p data-anim="fade" className="mt-4 text-[15px] leading-relaxed text-white/65">
+            <p data-anim="fade" className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/65">
               {total} retail partners across {storeCities.length} cities in Pakistan. Call a store or get
               directions below.
             </p>

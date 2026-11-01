@@ -48,7 +48,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#1a1c1e] text-white">
+    <footer className="border-t border-white/10 bg-bg-deep text-white">
       <div className="container-page">
         {/* Top: logo + socials */}
         <div className="flex flex-col gap-6 border-b border-white/15 py-8 sm:flex-row sm:items-center sm:justify-between">

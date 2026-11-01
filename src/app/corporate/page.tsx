@@ -80,7 +80,7 @@ export default function CorporatePage() {
             </a>
             <Link
               href="/products"
-              className="inline-flex border border-white/35 px-7 py-3.5 text-[12px] font-semibold tracking-[0.16em] uppercase text-white hover:bg-white hover:text-ink transition-colors"
+              className="inline-flex border border-white/35 px-7 py-3.5 text-[12px] font-semibold tracking-[0.16em] uppercase text-white transition-colors hover:bg-white hover:text-[#111]"
             >
               Browse catalog
             </Link>
@@ -90,7 +90,7 @@ export default function CorporatePage() {
 
       <section data-anim="stagger" className="container-page section-pad grid gap-6 md:grid-cols-3">
         {benefits.map((item) => (
-          <div key={item.title} className="border border-line bg-white p-7">
+          <div key={item.title} className="border border-line bg-bg-muted p-7">
             <h2 className="font-display text-2xl font-semibold tracking-tight">{item.title}</h2>
             <p className="mt-3 text-sm text-ink-soft leading-relaxed">{item.text}</p>
           </div>
@@ -106,7 +106,7 @@ export default function CorporatePage() {
             <Link
               key={cat.slug}
               href={`/categories/${cat.slug}`}
-              className="border border-line bg-white px-4 py-2 text-[11px] font-semibold tracking-[0.12em] uppercase hover:border-accent hover:text-accent transition-colors"
+              className="border border-line bg-bg-muted px-4 py-2 text-[11px] font-semibold tracking-[0.12em] uppercase transition-colors hover:border-accent hover:text-accent"
             >
               {cat.shortName}
             </Link>

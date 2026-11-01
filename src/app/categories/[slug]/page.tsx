@@ -125,7 +125,7 @@ export default async function CategoryPage({ params }: Props) {
           </div>
         </section>
       ) : (
-        <section className="border-b border-line bg-white">
+        <section className="border-b border-line bg-bg">
           <div className="container-page py-12 lg:py-16">
             <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-soft" aria-label="Breadcrumb">
               <Link href="/products" className="hover:text-ink">
@@ -160,7 +160,7 @@ export default async function CategoryPage({ params }: Props) {
             className={`border px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors ${
               n.id === node.id
                 ? "border-accent bg-accent text-white"
-                : "border-line bg-white hover:border-accent hover:text-accent"
+                : "border-line bg-bg-muted hover:border-accent hover:text-accent"
             }`}
           >
             {n.label}

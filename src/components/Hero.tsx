@@ -172,7 +172,7 @@ export function Hero() {
             </Link>
             <Link
               href={secondaryHref}
-              className="inline-flex border border-white/70 bg-black/25 px-6 py-3 text-sm font-medium text-white backdrop-blur-[2px] transition-colors hover:bg-white hover:text-ink"
+              className="inline-flex border border-white/70 bg-black/25 px-6 py-3 text-sm font-medium text-white backdrop-blur-[2px] transition-colors hover:bg-white hover:text-[#111]"
             >
               {secondaryLabel}
             </Link>
