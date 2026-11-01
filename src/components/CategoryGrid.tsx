@@ -4,10 +4,22 @@ import { categoryCoverImage, countProducts, topCategories } from "@/data/catalog
 
 export function CategoryGrid() {
   return (
-    <section className="relative isolate overflow-hidden border-y border-white/10 bg-bg-deep text-white">
+    <section className="relative isolate overflow-hidden border-y border-white/10 text-white">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(232,93,4,0.12),transparent_45%),radial-gradient(ellipse_at_90%_30%,rgba(255,255,255,0.04),transparent_40%)]"
+        className="absolute inset-0 bg-[linear-gradient(180deg,#0a0a0a_0%,#121212_42%,#0b0b0b_100%)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_12%_-10%,rgba(232,93,4,0.28),transparent_55%),radial-gradient(ellipse_55%_45%_at_88%_18%,rgba(255,140,50,0.1),transparent_50%),radial-gradient(ellipse_70%_50%_at_50%_110%,rgba(232,93,4,0.12),transparent_55%)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
       />
 
       <div className="container-page section-pad relative">
@@ -35,17 +47,14 @@ export function CategoryGrid() {
           </Link>
         </div>
 
-        <div
-          data-anim="stagger"
-          className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4"
-        >
+        <div data-anim="stagger" className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
           {topCategories.map((cat, i) => {
             const src = categoryCoverImage(cat);
             return (
               <Link
                 key={cat.slug}
                 href={`/categories/${cat.slug}`}
-                className="group relative min-h-[400px] overflow-hidden border border-accent bg-bg-deep text-white transition-shadow duration-300 hover:shadow-[0_0_0_1px_var(--accent)] lg:min-h-[460px]"
+                className="group relative min-h-[400px] overflow-hidden border border-accent/80 bg-black text-white shadow-[0_0_0_1px_rgba(232,93,4,0.15)] transition-[border-color,box-shadow,transform] duration-500 hover:-translate-y-1 hover:border-accent hover:shadow-[0_18px_50px_rgba(0,0,0,0.45),0_0_0_1px_rgba(232,93,4,0.55)] lg:min-h-[460px]"
               >
                 <Image
                   src={src}
@@ -53,9 +62,10 @@ export function CategoryGrid() {
                   fill
                   quality={92}
                   sizes="(max-width:1024px) 50vw, 25vw"
-                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/15" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(232,93,4,0.16),transparent_42%)] opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
 
                 <span className="absolute inset-x-5 top-5 z-[1] flex justify-between text-[11px] font-semibold uppercase tracking-[0.14em]">
                   <span className="text-accent">{String(i + 1).padStart(2, "0")}</span>

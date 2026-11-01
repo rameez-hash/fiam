@@ -110,12 +110,12 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
 
       <header
         ref={headerRef}
-        className={`sticky top-0 z-50 border-b border-line bg-white transition-shadow ${scrolled ? "shadow-sm" : ""}`}
+        className={`sticky top-0 z-50 border-b border-white/10 bg-[#111] text-white transition-shadow ${scrolled ? "shadow-[0_12px_40px_rgba(0,0,0,0.35)]" : ""}`}
       >
         <div className="container-page flex h-16 items-center justify-between gap-6">
-          <Logo priority size="md" variant="dark" />
+          <Logo priority size="md" variant="light" />
 
-          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-ink">
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-white/90">
             {nav.map((item) =>
               item.label === "Products" ? (
                 <div
@@ -144,10 +144,10 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
                       shopOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
                     }`}
                   >
-                    <div className="border-b border-line bg-white shadow-lg">
+                    <div className="border-b border-white/10 bg-[#141414] shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
                       <div className="container-page grid grid-cols-[240px_1fr_260px] gap-8 py-7">
-                        <div className="border-r border-line pr-6">
-                          <p className="text-xs font-medium text-ink-soft">Categories</p>
+                        <div className="border-r border-white/10 pr-6">
+                          <p className="text-xs font-medium text-white/45">Categories</p>
                           <div className="mt-3 space-y-0.5">
                             {menu.map((cat, i) => (
                               <Link
@@ -157,11 +157,11 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
                                 onFocus={() => setActiveCat(i)}
                                 onClick={() => setShopOpen(false)}
                                 className={`flex items-center justify-between px-3 py-2.5 text-sm transition-colors ${
-                                  i === activeCat ? "bg-bg text-accent" : "text-ink hover:bg-bg"
+                                  i === activeCat ? "bg-white/8 text-accent" : "text-white/85 hover:bg-white/5"
                                 }`}
                               >
                                 <span>{cat.name}</span>
-                                <span className="text-xs tabular-nums text-ink-soft">{cat.count}</span>
+                                <span className="text-xs tabular-nums text-white/40">{cat.count}</span>
                               </Link>
                             ))}
                           </div>
@@ -176,14 +176,14 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
 
                         {current && (
                           <div className="min-w-0">
-                            <p className="text-xs font-medium text-ink-soft">{current.name} series</p>
+                            <p className="text-xs font-medium text-white/45">{current.name} series</p>
                             <div className="mt-3 grid max-h-[52vh] grid-cols-2 gap-x-6 overflow-y-auto xl:grid-cols-3">
                               {current.series.map((s) => (
                                 <Link
                                   key={s.slug}
                                   href={`/categories/${s.slug}`}
                                   onClick={() => setShopOpen(false)}
-                                  className="block border-b border-line/60 py-2 text-sm leading-snug text-ink transition-colors hover:text-accent"
+                                  className="block border-b border-white/10 py-2 text-sm leading-snug text-white/80 transition-colors hover:text-accent"
                                 >
                                   {s.name}
                                 </Link>
@@ -196,7 +196,7 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
                           <Link
                             href={`/categories/${current.slug}`}
                             onClick={() => setShopOpen(false)}
-                            className="group relative block min-h-[240px] overflow-hidden bg-bg"
+                            className="group relative block min-h-[240px] overflow-hidden bg-black"
                           >
                             <Image
                               src={current.image}
@@ -215,7 +215,7 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
                   </div>
                 </div>
               ) : (
-                <Link key={item.href} href={item.href} className="py-2 hover:text-accent transition-colors">
+                <Link key={item.href} href={item.href} className="py-2 transition-colors hover:text-accent">
                   {item.label}
                 </Link>
               )
@@ -225,29 +225,29 @@ export function Header({ menu }: { menu: MenuCategory[] }) {
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex bg-accent px-4 py-2.5 text-sm font-medium text-white hover:bg-accent-deep transition-colors"
+              className="hidden sm:inline-flex bg-accent px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-deep"
             >
               Contact
             </Link>
             <button
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="lg:hidden flex h-10 w-10 items-center justify-center border border-line"
+              className="lg:hidden flex h-10 w-10 items-center justify-center border border-white/20"
               onClick={() => setOpen((v) => !v)}
             >
               <span className="relative block h-3.5 w-5">
                 <span
-                  className={`absolute left-0 top-0 h-[2px] w-full bg-ink transition-transform ${
+                  className={`absolute left-0 top-0 h-[2px] w-full bg-white transition-transform ${
                     open ? "translate-y-[6px] rotate-45" : ""
                   }`}
                 />
                 <span
-                  className={`absolute left-0 top-[6px] h-[2px] w-full bg-ink transition-opacity ${
+                  className={`absolute left-0 top-[6px] h-[2px] w-full bg-white transition-opacity ${
                     open ? "opacity-0" : "opacity-100"
                   }`}
                 />
                 <span
-                  className={`absolute left-0 top-[12px] h-[2px] w-full bg-ink transition-transform ${
+                  className={`absolute left-0 top-[12px] h-[2px] w-full bg-white transition-transform ${
                     open ? "-translate-y-[6px] -rotate-45" : ""
                   }`}
                 />
