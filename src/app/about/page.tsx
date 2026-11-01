@@ -73,7 +73,7 @@ export default function AboutPage() {
           </ul>
         </div>
 
-        <div data-anim="fade" className="self-start border border-line bg-white p-8 lg:p-10">
+        <div data-anim="fade" className="self-start bg-bg-muted/60 p-8 lg:p-10">
           <h3 className="font-display text-2xl font-semibold">Company facts</h3>
           <dl className="mt-6 space-y-4 text-sm">
             <div>

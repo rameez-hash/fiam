@@ -37,7 +37,7 @@ export function CategoryGrid() {
 
         <div
           data-anim="stagger"
-          className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4"
+          className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4"
         >
           {topCategories.map((cat, i) => {
             const src = categoryCoverImage(cat);
@@ -45,7 +45,7 @@ export function CategoryGrid() {
               <Link
                 key={cat.slug}
                 href={`/categories/${cat.slug}`}
-                className="group relative min-h-[400px] overflow-hidden bg-bg-deep text-white lg:min-h-[460px]"
+                className="group relative min-h-[400px] overflow-hidden border border-white/15 bg-bg-deep text-white transition-[border-color] duration-300 hover:border-accent/60 lg:min-h-[460px]"
               >
                 <Image
                   src={src}

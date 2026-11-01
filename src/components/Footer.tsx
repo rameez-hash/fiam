@@ -9,6 +9,7 @@ const informationLinks = [
   { href: "/products", label: "View our products" },
   { href: "/corporate", label: "Corporate orders" },
   { href: "/projects", label: "Our latest projects" },
+  { href: "/blog", label: "Lighting blog" },
   { href: "/stores", label: "Store locations" },
 ];
 

@@ -240,6 +240,33 @@ export function faqJsonLd(faqs: { question: string; answer: string }[]) {
   };
 }
 
+export function articleJsonLd(post: {
+  title: string;
+  description: string;
+  path: string;
+  image: string;
+  date: string;
+  keywords?: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    image: [absoluteUrl(post.image)],
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { "@type": "Organization", name: company.name },
+    publisher: {
+      "@type": "Organization",
+      name: company.name,
+      logo: { "@type": "ImageObject", url: absoluteUrl("/logo.png") },
+    },
+    mainEntityOfPage: absoluteUrl(post.path),
+    keywords: post.keywords?.join(", "),
+  };
+}
+
 export function JsonLd({ data }: { data: object | object[] }) {
   const payload = Array.isArray(data) ? data : [data];
   return (

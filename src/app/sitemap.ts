@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { blogPosts } from "@/data/blog";
 import { catalogNodes, catalogProducts } from "@/data/catalog";
 import { company } from "@/data/products";
 
@@ -13,12 +14,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/corporate",
     "/about",
     "/projects",
+    "/blog",
     "/contact",
   ].map((path) => ({
     url: `${base}${path || "/"}`,
     lastModified: now,
     changeFrequency: path === "" ? "weekly" : "monthly",
     priority: path === "" ? 1 : 0.8,
+  }));
+
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
+    url: `${base}/blog/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly",
+    priority: 0.7,
   }));
 
   const categoryRoutes: MetadataRoute.Sitemap = catalogNodes.map((n) => ({
@@ -36,5 +45,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes];
+  return [...staticRoutes, ...blogRoutes, ...categoryRoutes, ...productRoutes];
 }
